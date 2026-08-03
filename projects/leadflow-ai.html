@@ -1,80 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LeadFlow AI — Qasim Shaikh</title>
-<link rel="stylesheet" href="../styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LeadFlow AI — Qasim Shaikh</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    /* Page-Specific Blueprint Theme Enhancements & Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade {
+      animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    
+    /* 3-Column Problem / Persona / Solution Grid */
+    .pps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .pps-card {
+      background: rgba(17, 24, 39, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.15);
+      border-radius: 12px;
+      padding: 24px;
+      backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+    }
+    .pps-card:hover {
+      border-color: rgba(0, 242, 254, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 242, 254, 0.08);
+    }
+    .pps-card h3 {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pps-card.problem h3 { color: #f87171; }
+    .pps-card.persona h3 { color: #fbbf24; }
+    .pps-card.solution h3 { color: #34d399; }
+    
+    .persona-badge {
+      display: inline-block;
+      background: rgba(251, 191, 36, 0.1);
+      color: #fbbf24;
+      border: 1px solid rgba(251, 191, 36, 0.25);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
+    /* Workflow Screenshot Display Container */
+    .screenshot-container {
+      margin-top: 36px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .screenshot-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+    .screenshot-frame {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: #020617;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .screenshot-container:hover .screenshot-frame {
+      transform: scale(1.01);
+    }
+    
+    /* Logic Flow Nodes */
+    .flow-steps {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .flow-step {
+      background: rgba(15, 23, 42, 0.6);
+      border-left: 3px solid #00f2fe;
+      padding: 16px 20px;
+      border-radius: 0 10px 10px 0;
+    }
+    .flow-step.ai-node {
+      border-left-color: #a855f7; /* Purple for AI */
+    }
+    .flow-step.action-node {
+      border-left-color: #34d399; /* Green for Action */
+    }
+  </style>
 </head>
 <body>
-<nav class="topnav"><div class="wrap"><div class="brand"><span class="dot"></span>QASIM.SHAIKH</div></div></nav>
 
-<div class="wrap detail-hero">
-  <a class="back-link" href="../index.html#projects">← Back to systems</a>
-  <span class="eyebrow">System 01</span>
-  <h1 style="margin-top:14px;">LeadFlow AI</h1>
-  <p class="lede">A 7-workflow n8n suite that takes a real estate lead from form-fill to booked call — no manual handoff.</p>
-  <div class="detail-tags">
-    <span class="tag">n8n</span><span class="tag">OpenAI API</span><span class="tag">WhatsApp Cloud API</span><span class="tag">SendGrid</span><span class="tag">Calendly</span><span class="tag">Google Sheets</span>
-  </div>
-  <div class="btnrow">
-    <a class="btn primary" href="https://futuretech-ai-nexus.lovable.app/" target="_blank" rel="noopener">Live demo →</a>
-  </div>
-</div>
+  <!-- Navigation -->
+  <nav class="topnav">
+    <div class="wrap">
+      <div class="brand"><span class="dot"></span>QASIM.SHAIKH</div>
+    </div>
+  </nav>
 
-<div class="wrap">
-  <div class="pp-grid">
-    <div class="pp-card problem">
-      <h3>The problem</h3>
-      <p>A lead fills a Facebook Ad form or Google Form for a property. In most agencies, that lead sits in a spreadsheet until someone manually reads it, decides how to respond, and follows up — often a day or more later, by which point the lead has already messaged three other agents.</p>
+  <!-- Hero Header -->
+  <div class="wrap detail-hero animate-fade">
+    <a class="back-link" href="../index.html#projects">← Back to systems</a>
+    <span class="eyebrow">System 01</span>
+    <h1 style="margin-top:14px;">LeadFlow AI</h1>
+    <p class="lede">A 7-workflow n8n suite that takes a real estate lead from form-fill to booked call — no manual handoff.</p>
+    
+    <div class="detail-tags">
+      <span class="tag">n8n</span>
+      <span class="tag">OpenAI API</span>
+      <span class="tag">WhatsApp Cloud API</span>
+      <span class="tag">SendGrid</span>
+      <span class="tag">Calendly</span>
+      <span class="tag">Google Sheets</span>
     </div>
-    <div class="pp-card solution">
-      <h3>The solution</h3>
-      <p>The moment a form is submitted, a webhook fires. The lead's details are logged, an AI model reads the enquiry and drafts a personalized first message, and that message goes out over WhatsApp or email within seconds — while a Calendly link is offered for booking a call directly.</p>
-    </div>
-  </div>
 
-  <div class="section-head" style="margin-top:8px;">
-    <span class="kicker">Architecture</span>
-    <h2>How the 7 workflows connect</h2>
-  </div>
-
-  <div class="flow-steps">
-    <div class="flow-step">
-      <div class="node-dot"></div>
-      <div><div class="step-label">Trigger</div><div class="step-text">Facebook Ads / Google Form submission hits an n8n <b>webhook</b>.</div></div>
-    </div>
-    <div class="flow-step">
-      <div class="node-dot"></div>
-      <div><div class="step-label">Capture</div><div class="step-text">Lead data is normalized and written to a <b>Google Sheets</b> CRM row.</div></div>
-    </div>
-    <div class="flow-step">
-      <div class="node-dot"></div>
-      <div><div class="step-label">Personalize</div><div class="step-text">The lead's enquiry is passed to the <b>OpenAI API</b>, which drafts a first-contact message matched to the property and enquiry type.</div></div>
-    </div>
-    <div class="flow-step">
-      <div class="node-dot"></div>
-      <div><div class="step-label">Deliver</div><div class="step-text">The message sends via <b>WhatsApp Cloud API</b> if a phone number exists, otherwise <b>SendGrid</b> email.</div></div>
-    </div>
-    <div class="flow-step">
-      <div class="node-dot"></div>
-      <div><div class="step-label">Book</div><div class="step-text">A <b>Calendly</b> link is included for the lead to self-book a call, no back-and-forth needed.</div></div>
-    </div>
-    <div class="flow-step">
-      <div class="node-dot"></div>
-      <div><div class="step-label">Track</div><div class="step-text">Every send, reply, and booking event updates the same Sheets row, so the lead's status is visible without opening five different tools.</div></div>
-    </div>
-    <div class="flow-step">
-      <div class="node-dot"></div>
-      <div><div class="step-label">Notify</div><div class="step-text">If a lead books or replies, an internal notification fires so a human takes over from there.</div></div>
+    <div class="btnrow" style="margin-top: 20px;">
+      <a class="btn primary" href="https://futuretech-ai-nexus.lovable.app/" target="_blank" rel="noopener">View Live Demo →</a>
     </div>
   </div>
 
-  <div class="disclaimer-box">
-    <b>Status:</b> Self-built and tested end-to-end with sample/test data. Not yet run against live client traffic — no production lead-volume claims are made here.
-  </div>
-</div>
+  <div class="wrap animate-fade" style="animation-delay: 0.15s;">
+    
+    <!-- Problem / Persona / Solution Section -->
+    <div class="pps-grid">
+      <!-- 1. The Problem -->
+      <div class="pps-card problem">
+        <h3><span>⚠️</span> The Problem</h3>
+        <p>A lead fills a Facebook Ad form or Google Form for a property. In most agencies, that lead sits in a spreadsheet until someone manually reads it, decides how to respond, and follows up — often a day or more later, by which point the lead has already messaged three other agents.</p>
+      </div>
 
-<footer>© 2026 Qasim Shaikh</footer>
+      <!-- 2. Target Persona -->
+      <div class="pps-card persona">
+        <h3><span>🎯</span> Example Persona</h3>
+        <span class="persona-badge">Real Estate Agencies & Independent Brokers</span>
+        <p>Brokers struggling with slow lead response times who want to capture high-intent buyers instantly and book showings without hiring a 24/7 SDR team.</p>
+      </div>
+
+      <!-- 3. The Solution -->
+      <div class="pps-card solution">
+        <h3><span>✅</span> The Solution</h3>
+        <p>The moment a form is submitted, a webhook fires. The lead's details are logged, an AI model drafts a personalized first message, and that message goes out over WhatsApp or email within seconds — offering a Calendly link to book a call directly.</p>
+      </div>
+    </div>
+
+    <!-- Workflow Screenshot Section -->
+    <div class="screenshot-container animate-fade" style="animation-delay: 0.25s;">
+      <div class="screenshot-header">
+        <span>📸 <b>n8n Execution Architecture</b> (7-Part Workflow)</span>
+        <span style="font-family: monospace; color: #38bdf8;">system_01_n8n.png</span>
+      </div>
+      <!-- Add your screenshot image into your repository folder 'assets/' and update the src below -->
+      <img src="../assets/leadflow-workflow.png" alt="LeadFlow AI n8n Workflow Architecture" class="screenshot-frame" onerror="this.src='https://via.placeholder.com/1200x600/0f172a/38bdf8?text=Upload+Your+n8n+Workflow+Screenshot+To+assets/leadflow-workflow.png';">
+    </div>
+
+    <!-- Step-by-Step Logic Flow -->
+    <div class="section-head" style="margin-top:40px;">
+      <span class="kicker">Architecture</span>
+      <h2>How the 7 workflows connect</h2>
+    </div>
+
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-label" style="color:#38bdf8; font-weight:600; font-size:0.85rem;">WORKFLOW 1: TRIGGER</div>
+        <div class="step-text" style="margin-top:4px;">Facebook Ads / Google Form submission hits an n8n <b>webhook</b>.</div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-label" style="color:#38bdf8; font-weight:600; font-size:0.85rem;">WORKFLOW 2: CAPTURE</div>
+        <div class="step-text" style="margin-top:4px;">Lead data is normalized and written to a <b>Google Sheets</b> CRM row.</div>
+      </div>
+
+      <div class="flow-step ai-node">
+        <div class="step-label" style="color:#a855f7; font-weight:600; font-size:0.85rem;">WORKFLOW 3: PERSONALIZE</div>
+        <div class="step-text" style="margin-top:4px;">The lead's enquiry is passed to the <b>OpenAI API</b>, which drafts a first-contact message matched to the property and enquiry type.</div>
+      </div>
+
+      <div class="flow-step action-node">
+        <div class="step-label" style="color:#34d399; font-weight:600; font-size:0.85rem;">WORKFLOW 4: DELIVER</div>
+        <div class="step-text" style="margin-top:4px;">The message sends via <b>WhatsApp Cloud API</b> if a phone number exists, otherwise <b>SendGrid</b> email.</div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-label" style="color:#38bdf8; font-weight:600; font-size:0.85rem;">WORKFLOW 5: BOOK</div>
+        <div class="step-text" style="margin-top:4px;">A <b>Calendly</b> link is included for the lead to self-book a call, no back-and-forth needed.</div>
+      </div>
+
+      <div class="flow-step action-node">
+        <div class="step-label" style="color:#34d399; font-weight:600; font-size:0.85rem;">WORKFLOW 6: TRACK</div>
+        <div class="step-text" style="margin-top:4px;">Every send, reply, and booking event updates the same Sheets row, so the lead's status is visible without opening five different tools.</div>
+      </div>
+
+      <div class="flow-step action-node">
+        <div class="step-label" style="color:#34d399; font-weight:600; font-size:0.85rem;">WORKFLOW 7: NOTIFY</div>
+        <div class="step-text" style="margin-top:4px;">If a lead books or replies, an internal notification fires so a human takes over from there.</div>
+      </div>
+    </div>
+
+    <!-- Self-Directed Disclaimer -->
+    <div class="disclaimer-box" style="margin-top:32px;">
+      <b>Verification Status:</b> Self-built and tested end-to-end with sample/test data. Not yet run against live client traffic — no production lead-volume claims are made here.
+    </div>
+
+  </div>
+
+  <footer>© 2026 Qasim Shaikh — Built for performance</footer>
+
 </body>
 </html>
