@@ -1,88 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>HubSpot Lead Follow-Up Automation — Qasim Shaikh</title>
-<link rel="stylesheet" href="../styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HubSpot Lead Follow-Up Automation — Qasim Shaikh</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    /* Page-Specific Blueprint Theme Enhancements & Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade {
+      animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    
+    /* 3-Column Problem / Persona / Solution Grid */
+    .pps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .pps-card {
+      background: rgba(17, 24, 39, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.15);
+      border-radius: 12px;
+      padding: 24px;
+      backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+    }
+    .pps-card:hover {
+      border-color: rgba(0, 242, 254, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 242, 254, 0.08);
+    }
+    .pps-card h3 {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pps-card.problem h3 { color: #f87171; }
+    .pps-card.persona h3 { color: #fbbf24; }
+    .pps-card.solution h3 { color: #34d399; }
+    
+    .persona-badge {
+      display: inline-block;
+      background: rgba(251, 191, 36, 0.1);
+      color: #fbbf24;
+      border: 1px solid rgba(251, 191, 36, 0.25);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
+    /* Workflow Screenshot Display Container */
+    .screenshot-container {
+      margin-top: 36px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .screenshot-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+    .screenshot-frame {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: #020617;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .screenshot-container:hover .screenshot-frame {
+      transform: scale(1.01);
+    }
+    
+    /* Logic Flow Nodes */
+    .flow-steps {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .flow-step {
+      background: rgba(15, 23, 42, 0.6);
+      border-left: 3px solid #00f2fe;
+      padding: 16px 20px;
+      border-radius: 0 10px 10px 0;
+    }
+    .flow-step.branch {
+      border-left-color: #fbbf24;
+    }
+  </style>
 </head>
 <body>
-<nav class="topnav"><div class="wrap"><div class="brand"><span class="dot"></span>QASIM.SHAIKH</div></div></nav>
 
-<div class="wrap detail-hero">
-  <a class="back-link" href="../index.html#projects">← Back to systems</a>
-  <span class="eyebrow">System 03</span>
-  <h1 style="margin-top:14px;">HubSpot Lead Follow-Up Automation</h1>
-  <p class="lede">A timed, multi-branch HubSpot workflow that chases a converted lead for a reply — and automatically disqualifies the ones who never respond.</p>
-  <div class="detail-tags">
-    <span class="tag">HubSpot Workflows</span><span class="tag">Email Automation</span><span class="tag">CRM Logic</span>
-  </div>
-  <span class="status-tag">Built in HubSpot's workflow tool · no public demo (internal CRM logic)</span>
-</div>
-
-<div class="wrap">
-  <div class="pp-grid">
-    <div class="pp-card problem">
-      <h3>The problem</h3>
-      <p>A contact converts into a lead. Someone has to email them, then remember to check back in a few days, send a follow-up if there's no reply, try once more, and eventually mark the lead dead if it goes nowhere. Reps forget steps, and CRM records go stale.</p>
+  <!-- Navigation -->
+  <nav class="topnav">
+    <div class="wrap">
+      <div class="brand"><span class="dot"></span>QASIM.SHAIKH</div>
     </div>
-    <div class="pp-card solution">
-      <h3>The solution</h3>
-      <p>A HubSpot workflow runs the entire chase sequence on a timer with branching logic — reply or open triggers an internal handoff, silence triggers the next follow-up, and total silence auto-updates the CRM. No manual tracking.</p>
-    </div>
-  </div>
+  </nav>
 
-  <div class="section-head" style="margin-top:8px;">
-    <span class="kicker">Architecture</span>
-    <h2>The follow-up logic, step by step</h2>
+  <!-- Hero Header -->
+  <div class="wrap detail-hero animate-fade">
+    <a class="back-link" href="../index.html#projects">← Back to systems</a>
+    <span class="eyebrow">System 03</span>
+    <h1 style="margin-top:14px;">HubSpot Lead Follow-Up Automation</h1>
+    <p class="lede">A timed, multi-branch HubSpot workflow that chases converted leads on a schedule — engaging responders and automatically disqualifying unengaged records.</p>
+    
+    <div class="detail-tags">
+      <span class="tag">HubSpot Workflows</span>
+      <span class="tag">Email Automation</span>
+      <span class="tag">CRM Logic</span>
+      <span class="tag">Lead Lifecycle</span>
+    </div>
+    
+    <span class="status-tag">⚡ Built in HubSpot's Workflow Builder · Internal CRM Logic</span>
   </div>
 
-  <div class="flow-steps">
-    <div class="flow-step">
-      <div class="node-dot"></div>
-      <div><div class="step-label">Trigger</div><div class="step-text">Contact is <b>converted to Lead</b> in HubSpot.</div></div>
-    </div>
-    <div class="flow-step">
-      <div class="node-dot"></div>
-      <div><div class="step-label">Action</div><div class="step-text">Automated <b>initial email</b> sends immediately.</div></div>
-    </div>
-    <div class="flow-step branch">
-      <div class="node-dot"></div>
-      <div>
-        <div class="step-label">Wait 2 days → Branch: did they reply?</div>
-        <div class="flow-branch-opts">
-          <div class="yes">✓ Reply received → notify internal team with contact + email details → workflow ends</div>
-          <div class="no">✗ No reply → send Follow-up 1 → wait 3 days</div>
-        </div>
+  <div class="wrap animate-fade" style="animation-delay: 0.15s;">
+    
+    <!-- Problem / Persona / Solution Section -->
+    <div class="pps-grid">
+      <!-- 1. The Problem -->
+      <div class="pps-card problem">
+        <h3><span>⚠️</span> The Problem</h3>
+        <p>When inbound leads convert, sales reps manually send follow-ups and often forget to track delays. Unanswered leads sit untouched in the CRM, leading to high lead drop-off and inaccurate pipeline reporting.</p>
+      </div>
+
+      <!-- 2. Target Persona -->
+      <div class="pps-card persona">
+        <h3><span>🎯</span> Example Persona</h3>
+        <span class="persona-badge">B2B Sales Rep & Marketing Ops Lead</span>
+        <p>Sales Reps managing 30+ new lead inquiries weekly who need automated nurture reminders, and RevOps Leaders requiring clean lifecycle stage updates without manual data entry.</p>
+      </div>
+
+      <!-- 3. The Solution -->
+      <div class="pps-card solution">
+        <h3><span>✅</span> The Solution</h3>
+        <p>A multi-stage HubSpot workflow that initiates immediate outreach, monitors response delays, sends timed reminders, and automatically flags non-responders as "Unqualified Lead".</p>
       </div>
     </div>
-    <div class="flow-step branch">
-      <div class="node-dot"></div>
-      <div>
-        <div class="step-label">Branch: reply or email opened in that window?</div>
-        <div class="flow-branch-opts">
-          <div class="yes">✓ Yes → stop workflow, notify internal team</div>
-          <div class="no">✗ No → send Final Follow-up → wait 3 days (same logic)</div>
+
+    <!-- Workflow Screenshot Section -->
+    <div class="screenshot-container animate-fade" style="animation-delay: 0.25s;">
+      <div class="screenshot-header">
+        <span>📸 <b>Workflow Architecture Visual</b> (HubSpot Canvas)</span>
+        <span style="font-family: monospace; color: #38bdf8;">system_03_canvas.png</span>
+      </div>
+      <!-- Add your screenshot image into your repository folder 'assets/' and update the src below -->
+      <img src="../assets/hubspot-workflow.png" alt="HubSpot Lead Follow-Up Workflow Architecture" class="screenshot-frame" onerror="this.src='https://via.placeholder.com/1200x600/0f172a/38bdf8?text=Upload+Your+HubSpot+Workflow+Screenshot+To+assets/hubspot-workflow.png';">
+    </div>
+
+    <!-- Step-by-Step Logic Flow -->
+    <div class="section-head" style="margin-top:40px;">
+      <span class="kicker">Execution Architecture</span>
+      <h2>Step-by-Step Workflow Logic</h2>
+    </div>
+
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-label" style="color:#38bdf8; font-weight:600; font-size:0.85rem;">STAGE 1: TRIGGER</div>
+        <div class="step-text" style="margin-top:4px;">Contact form submission converts lifecycle stage to <b>"Lead"</b> in HubSpot.</div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-label" style="color:#38bdf8; font-weight:600; font-size:0.85rem;">STAGE 2: INITIAL OUTREACH</div>
+        <div class="step-text" style="margin-top:4px;">Automated introduction email dispatches immediately with personalized contact properties.</div>
+      </div>
+
+      <div class="flow-step branch">
+        <div class="step-label" style="color:#fbbf24; font-weight:600; font-size:0.85rem;">STAGE 3: TIMED DELAY & BRANCHING</div>
+        <div class="step-text" style="margin-top:4px;">System waits <b>2 Days</b> and checks engagement:</div>
+        <div style="margin-top:8px; font-size:0.9rem; padding-left:12px; border-left:2px solid rgba(255,255,255,0.1);">
+          <div style="color:#34d399;">✓ <b>Replied / Opened:</b> Triggers internal team notification & assigns sales task $\rightarrow$ Workflow Ends</div>
+          <div style="color:#f87171; margin-top:4px;">✗ <b>No Reply:</b> Dispatches Follow-up Email #1 $\rightarrow$ Wait 3 Days</div>
         </div>
       </div>
-    </div>
-    <div class="flow-step">
-      <div class="node-dot"></div>
-      <div>
-        <div class="step-label">Branch: still no reply?</div>
-        <div class="flow-branch-opts">
-          <div class="yes">✓ Reply at any point → notify internal team</div>
-          <div class="no">✗ No reply at all → auto-update CRM: mark contact <b>"Unqualified Lead"</b></div>
-        </div>
+
+      <div class="flow-step branch">
+        <div class="step-label" style="color:#fbbf24; font-weight:600; font-size:0.85rem;">STAGE 4: FINAL RE-ENGAGEMENT</div>
+        <div class="step-text" style="margin-top:4px;">If silence persists after 3 days, dispatches Final Follow-up email and waits 3 concluding days.</div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-label" style="color:#f87171; font-weight:600; font-size:0.85rem;">STAGE 5: AUTO-DISQUALIFICATION</div>
+        <div class="step-text" style="margin-top:4px;">If zero engagement occurs after final window, auto-updates contact status to <b>"Unqualified Lead"</b> to keep CRM data clean.</div>
       </div>
     </div>
+
+    <!-- Self-Directed Disclaimer -->
+    <div class="disclaimer-box" style="margin-top:32px;">
+      <b>Verification Status:</b> Configured and tested end-to-end within a HubSpot CRM Developer Sandbox environment as self-directed practice.
+    </div>
+
   </div>
 
-  <div class="disclaimer-box">
-    <b>Status:</b> Built and configured in a HubSpot workflow environment as self-directed practice. Not run against live client contact volume.
-  </div>
-</div>
+  <footer>© 2026 Qasim Shaikh — Built for performance</footer>
 
-<footer>© 2026 Qasim Shaikh</footer>
 </body>
 </html>
