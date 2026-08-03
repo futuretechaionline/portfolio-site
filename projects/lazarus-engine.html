@@ -1,1 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lazarus Engine — Qasim Shaikh</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<nav class="topnav"><div class="wrap"><div class="brand"><span class="dot"></span>QASIM.SHAIKH</div></div></nav>
 
+<div class="wrap detail-hero">
+  <a class="back-link" href="../index.html#projects">← Back to systems</a>
+  <span class="eyebrow">System 02</span>
+  <h1 style="margin-top:14px;">Lazarus Engine</h1>
+  <p class="lede">A 5-workflow n8n system that finds dormant CRM leads, scores them, and re-engages the ones worth chasing.</p>
+  <div class="detail-tags">
+    <span class="tag">n8n</span><span class="tag">OpenAI API</span><span class="tag">WhatsApp Cloud API</span><span class="tag">SendGrid</span><span class="tag">Google Sheets</span>
+  </div>
+  <div class="btnrow">
+    <a class="btn primary" href="https://lead-reactivation-page.netlify.app/" target="_blank" rel="noopener">Live demo →</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="pp-grid">
+    <div class="pp-card problem">
+      <h3>The problem</h3>
+      <p>Every CRM has a graveyard of leads that went cold — no reply, no follow-up, quietly ignored because reaching back out to hundreds of dormant contacts by hand isn't worth anyone's time.</p>
+    </div>
+    <div class="pp-card solution">
+      <h3>The solution</h3>
+      <p>The system scans the lead database on a schedule, scores each dormant lead on viability, and sends an AI-personalized re-engagement message to the ones worth another shot — then watches for replies in real time.</p>
+    </div>
+  </div>
+
+  <div class="section-head" style="margin-top:8px;">
+    <span class="kicker">Architecture</span>
+    <h2>How the 5 workflows connect</h2>
+  </div>
+
+  <div class="flow-steps">
+    <div class="flow-step">
+      <div class="node-dot"></div>
+      <div><div class="step-label">Trigger</div><div class="step-text"><b>Cron schedule</b> scans the lead database for contacts with no activity past a set threshold.</div></div>
+    </div>
+    <div class="flow-step">
+      <div class="node-dot"></div>
+      <div><div class="step-label">Score</div><div class="step-text">Each dormant lead is scored for viability based on original enquiry data and time-since-contact.</div></div>
+    </div>
+    <div class="flow-step">
+      <div class="node-dot"></div>
+      <div><div class="step-label">Personalize</div><div class="step-text"><b>OpenAI API</b> drafts a re-engagement message referencing the lead's original enquiry — not a generic "just checking in."</div></div>
+    </div>
+    <div class="flow-step">
+      <div class="node-dot"></div>
+      <div><div class="step-label">Send</div><div class="step-text">Message goes out via <b>WhatsApp Cloud API</b> or <b>SendGrid</b> depending on available contact info.</div></div>
+    </div>
+    <div class="flow-step">
+      <div class="node-dot"></div>
+      <div><div class="step-label">Detect &amp; handoff</div><div class="step-text">Incoming replies are detected in real time and the lead is flagged "warm" in <b>Google Sheets</b> for immediate human follow-up.</div></div>
+    </div>
+  </div>
+
+  <div class="disclaimer-box">
+    <b>Status:</b> Self-built and tested end-to-end with sample/test data. No reactivation-rate figures are claimed — none have been measured against a real dataset yet.
+  </div>
+</div>
+
+<footer>© 2026 Qasim Shaikh</footer>
+</body>
+</html>
