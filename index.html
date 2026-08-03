@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Qasim Shaikh — Marketing Automation & AI Workflow Builder</title>
+<meta name="description" content="Qasim Shaikh builds production-style n8n and HubSpot automation systems — lead capture, AI-personalized outreach, and dead-lead reactivation.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span>QASIM.SHAIKH</div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#projects">Systems</a>
+      <a href="#skills">Skills</a>
+      <a href="#certs">Certifications</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="btn ghost" href="mailto:skqasim923@gmail.com" style="padding:8px 16px;">Email</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">MBA · Operations &amp; Supply Chain · Self-directed automation practice</span>
+      <h1>I build automation systems that replace manual follow-up with <span class="accent">structured logic.</span></h1>
+      <p class="lede">n8n, HubSpot, and the OpenAI API — wired into lead capture, WhatsApp/email outreach, and CRM update workflows. Built and tested end-to-end, not pitched as slides.</p>
+      <div class="btnrow">
+        <a class="btn primary" href="#projects">View systems ↓</a>
+        <a class="btn ghost" href="https://drive.google.com/drive/folders/1Mffjgi9EfVrvHQqLFDPZmlVz44raPpQ6?usp=sharing" target="_blank" rel="noopener">Download résumé</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/qasim-shaikh-/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="num">4</div><div class="label">Automation systems built</div></div>
+        <div class="stat"><div class="num">13+</div><div class="label">Workflows engineered end-to-end</div></div>
+        <div class="stat"><div class="num">8</div><div class="label">APIs / platforms integrated</div></div>
+      </div>
+    </div>
+
+    <div class="diagram-card">
+      <svg viewBox="0 0 320 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of an automated lead workflow: lead captured, AI scoring, outreach sent, CRM updated">
+        <!-- connectors -->
+        <path class="flow-line" d="M160 55 L160 95" />
+        <path class="flow-line" d="M160 145 L160 185" />
+        <path class="flow-line" d="M160 235 L160 275" />
+
+        <!-- node 1 -->
+        <g class="flow-node">
+          <rect x="60" y="15" width="200" height="40" rx="6"/>
+          <text x="160" y="33" text-anchor="middle">Lead captured</text>
+          <text class="sub" x="160" y="46" text-anchor="middle">Form / Ads webhook</text>
+        </g>
+        <!-- node 2 -->
+        <g class="flow-node">
+          <rect x="60" y="95" width="200" height="50" rx="6"/>
+          <text x="160" y="116" text-anchor="middle">AI scores &amp; personalizes</text>
+          <text class="sub" x="160" y="132" text-anchor="middle">OpenAI API</text>
+        </g>
+        <!-- node 3 -->
+        <g class="flow-node">
+          <rect x="60" y="185" width="200" height="50" rx="6"/>
+          <text x="160" y="206" text-anchor="middle">Outreach sent</text>
+          <text class="sub" x="160" y="222" text-anchor="middle">WhatsApp Cloud API / SendGrid</text>
+        </g>
+        <!-- node 4 -->
+        <g class="flow-node">
+          <rect x="60" y="275" width="200" height="50" rx="6"/>
+          <text x="160" y="296" text-anchor="middle">CRM updated</text>
+          <text class="sub" x="160" y="312" text-anchor="middle">HubSpot / Google Sheets</text>
+        </g>
+
+        <circle class="flow-pulse" cx="160" cy="75" r="3">
+          <animate attributeName="cy" values="60;90;60" dur="2.8s" repeatCount="indefinite"/>
+        </circle>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">01 — About</span>
+      <h2>Founder, FutureTech AI — a self-directed practice, not an agency.</h2>
+    </div>
+    <div class="about-panel">
+      <div class="avatar" id="avatarSlot">QS</div>
+      <div>
+        <p class="lede">I'm an MBA graduate (Operations &amp; Supply Chain, Savitribai Phule Pune University — First Class with Distinction, CGPA 8.18) who builds automation systems the way an operations person would: map the process, remove the manual steps, wire the handoffs so nothing falls through. FutureTech AI is where I build and test those systems myself — n8n workflows, HubSpot sequences, AI-personalized outreach — before I'd ever sell them to a client.</p>
+        <p class="note">Everything on this site is work I built and can walk through live, unprompted. No client engagements have closed yet — these are self-directed systems, described as built, not delivered.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">02 — Systems</span>
+      <h2>Four systems, each solving one manual bottleneck.</h2>
+      <p class="section-sub">Every workflow here runs — trigger, logic branches, and all. Click through for the architecture, not just a screenshot.</p>
+    </div>
+
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-top">
+          <div class="project-title">LeadFlow AI</div>
+          <span class="wf-count">7 workflows</span>
+        </div>
+        <p class="project-problem">Real estate teams lose leads between form fill and first contact. This captures, scores, and reaches out automatically.</p>
+        <div class="tags">
+          <span class="tag">n8n</span><span class="tag">OpenAI API</span><span class="tag">WhatsApp Cloud API</span><span class="tag">SendGrid</span><span class="tag">Calendly</span><span class="tag">Google Sheets</span>
+        </div>
+        <div class="project-links">
+          <a href="projects/leadflow-ai.html">View architecture →</a>
+          <a href="https://futuretech-ai-nexus.lovable.app/" target="_blank" rel="noopener">Live demo</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-top">
+          <div class="project-title">Lazarus Engine</div>
+          <span class="wf-count">5 workflows</span>
+        </div>
+        <p class="project-problem">Dormant CRM leads just sit there. This scores viability, re-engages them with AI-personalized messages, and detects replies in real time.</p>
+        <div class="tags">
+          <span class="tag">n8n</span><span class="tag">OpenAI API</span><span class="tag">WhatsApp Cloud API</span><span class="tag">SendGrid</span><span class="tag">Google Sheets</span>
+        </div>
+        <div class="project-links">
+          <a href="projects/lazarus-engine.html">View architecture →</a>
+          <a href="https://lead-reactivation-page.netlify.app/" target="_blank" rel="noopener">Live demo</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-top">
+          <div class="project-title">HubSpot Lead Follow-Up Automation</div>
+          <span class="wf-count">1 multi-branch workflow</span>
+        </div>
+        <p class="project-problem">Converted leads need timed follow-up without a rep babysitting the inbox. This chases, waits, escalates, and disqualifies — automatically.</p>
+        <div class="tags">
+          <span class="tag">HubSpot Workflows</span><span class="tag">Email Automation</span><span class="tag">CRM Logic</span>
+        </div>
+        <div class="project-links">
+          <a href="projects/hubspot-followup.html">View architecture →</a>
+          <span class="status-tag">Built in HubSpot · no public demo</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-top">
+          <div class="project-title">Outreach Engine</div>
+          <span class="wf-count">Cold-email sequence</span>
+        </div>
+        <p class="project-problem">Manual cold outreach doesn't scale past a handful of prospects a day. This sequences and sends without the copy-paste.</p>
+        <div class="tags">
+          <span class="tag">n8n</span><span class="tag">Cold Email</span><span class="tag">Sequencing Logic</span>
+        </div>
+        <div class="project-links">
+          <a href="projects/outreach-engine.html">View architecture →</a>
+          <span class="status-tag">Built locally · not deployed publicly</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">03 — Skills</span>
+      <h2>The stack, calibrated honestly.</h2>
+      <p class="section-sub">Advanced means I can architect and debug it unassisted. Working means I've shipped with it. Familiar means I understand it but haven't built production work with it yet.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-cat">
+        <h3>Automation</h3>
+        <ul>
+          <li>n8n <span class="level">ADVANCED</span></li>
+          <li>Make <span class="level">WORKING</span></li>
+          <li>Zapier <span class="level">FAMILIAR</span></li>
+        </ul>
+      </div>
+      <div class="skill-cat">
+        <h3>AI &amp; APIs</h3>
+        <ul>
+          <li>OpenAI API <span class="level">ADVANCED</span></li>
+          <li>Claude API <span class="level">WORKING</span></li>
+          <li>Prompt Engineering <span class="level">WORKING</span></li>
+        </ul>
+      </div>
+      <div class="skill-cat">
+        <h3>CRM &amp; Outreach</h3>
+        <ul>
+          <li>HubSpot CRM <span class="level">WORKING</span></li>
+          <li>Apollo / Sales Navigator <span class="level">ADVANCED</span></li>
+          <li>Instantly <span class="level">WORKING</span></li>
+          <li>GoHighLevel <span class="level">FAMILIAR</span></li>
+        </ul>
+      </div>
+      <div class="skill-cat">
+        <h3>Messaging &amp; Comms</h3>
+        <ul>
+          <li>WhatsApp Cloud API <span class="level">WORKING</span></li>
+          <li>SendGrid <span class="level">WORKING</span></li>
+          <li>Calendly API <span class="level">WORKING</span></li>
+        </ul>
+      </div>
+      <div class="skill-cat">
+        <h3>Data &amp; Analytics</h3>
+        <ul>
+          <li>Google Sheets <span class="level">ADVANCED</span></li>
+          <li>Excel <span class="level">WORKING</span></li>
+          <li>GA4 <span class="level">FAMILIAR</span></li>
+        </ul>
+      </div>
+      <div class="skill-cat">
+        <h3>Marketing</h3>
+        <ul>
+          <li>Meta Ads Manager <span class="level">WORKING</span></li>
+          <li>UTM Tracking <span class="level">WORKING</span></li>
+          <li>Clay <span class="level">FAMILIAR</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certs">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">04 — Certifications</span>
+      <h2>Held, not claimed.</h2>
+    </div>
+    <div class="certs-list">
+      <div class="cert-row">
+        <div><div class="cert-name">Digital Marketing</div><div class="cert-issuer">IIM Bangalore / SWAYAM — 75.5%</div></div>
+        <span class="cert-status done">COMPLETED</span>
+      </div>
+      <div class="cert-row">
+        <div><div class="cert-name">HubSpot Marketing Hub</div><div class="cert-issuer">HubSpot Academy</div></div>
+        <span class="cert-status done">COMPLETED</span>
+      </div>
+      <div class="cert-row">
+        <div><div class="cert-name">Digital Marketing &amp; E-commerce</div><div class="cert-issuer">Google / Coursera</div></div>
+        <span class="cert-status done">COMPLETED</span>
+      </div>
+      <div class="cert-row">
+        <div><div class="cert-name">Social Media Marketing Professional</div><div class="cert-issuer">Meta / Coursera</div></div>
+        <span class="cert-status done">COMPLETED</span>
+      </div>
+      <div class="cert-row">
+        <div><div class="cert-name">HubSpot Sales Hub &amp; Reporting</div><div class="cert-issuer">HubSpot Academy</div></div>
+        <span class="cert-status done">COMPLETED</span>
+      </div>
+      <div class="cert-row">
+        <div><div class="cert-name">Google Analytics 4</div><div class="cert-issuer">Google / Skillshop</div></div>
+        <span class="cert-status done">COMPLETED</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-panel">
+      <div>
+        <h2 style="margin-top:0;">Let's talk.</h2>
+        <p class="section-sub" style="margin-top:8px;">Open to Marketing Automation / GTM-RevOps roles — remote-first, or Nagpur / Pune.</p>
+      </div>
+      <div class="contact-links">
+        <a class="btn primary" href="mailto:skqasim923@gmail.com">Email me</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/qasim-shaikh-/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="https://drive.google.com/drive/folders/1Mffjgi9EfVrvHQqLFDPZmlVz44raPpQ6?usp=sharing" target="_blank" rel="noopener">Résumé (PDF)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Qasim Shaikh — built and hosted as a static site.</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
