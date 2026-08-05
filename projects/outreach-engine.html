@@ -6,53 +6,109 @@
     <title>Outreach Engine — Qasim Shaikh</title>
     <link rel="stylesheet" href="../styles.css">
     <style>
-        /* Page-Specific Blueprint Theme Enhancements & Animations */
+        /* =========================================================
+           ENHANCED UI & ANIMATION STYLES
+           ========================================================= */
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade {
-            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* 3-Column Problem / Persona / Solution Grid */
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(56, 189, 248, 0.15); }
+            50% { box-shadow: 0 0 25px rgba(56, 189, 248, 0.35); }
+        }
+
+        .animate-fade {
+            animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        /* Hero Styling */
+        .detail-hero-card {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.7) 100%);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 16px;
+            padding: 36px;
+            margin-top: 20px;
+            backdrop-filter: blur(12px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .detail-hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, transparent, #00f2fe, transparent);
+        }
+
+        .status-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-top: 18px;
+            animation: pulseGlow 3s infinite;
+        }
+
+        /* 3-Column PPS Grid */
         .pps-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
-            margin-top: 24px;
+            margin-top: 28px;
         }
+
         .pps-card {
-            background: rgba(17, 24, 39, 0.7);
-            border: 1px solid rgba(56, 189, 248, 0.15);
-            border-radius: 12px;
+            background: rgba(15, 23, 42, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
             padding: 24px;
             backdrop-filter: blur(8px);
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
         }
+
         .pps-card:hover {
-            border-color: rgba(0, 242, 254, 0.4);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(0, 242, 254, 0.08);
+            transform: translateY(-4px);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(56, 189, 248, 0.1);
         }
+
         .pps-card h3 {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1.2px;
             margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 8px;
+            font-weight: 700;
         }
+
         .pps-card.problem h3 { color: #f87171; }
         .pps-card.persona h3 { color: #fbbf24; }
         .pps-card.solution h3 { color: #34d399; }
 
         .persona-badge {
             display: inline-block;
-            background: rgba(251, 191, 36, 0.1);
+            background: rgba(251, 191, 36, 0.12);
             color: #fbbf24;
-            border: 1px solid rgba(251, 191, 36, 0.25);
+            border: 1px solid rgba(251, 191, 36, 0.3);
             font-size: 0.75rem;
             font-weight: 600;
             padding: 4px 10px;
@@ -60,152 +116,283 @@
             margin-bottom: 12px;
         }
 
-        /* Workflow Screenshot Display Container */
-        .screenshot-container {
+        /* Mac Browser Mockup Frame */
+        .browser-window {
             margin-top: 36px;
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(15, 23, 42, 0.95);
             border: 1px solid rgba(56, 189, 248, 0.25);
             border-radius: 14px;
-            padding: 16px;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
-            position: relative;
             overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 242, 254, 0.05);
+            transition: border-color 0.3s ease;
         }
-        .screenshot-header {
+
+        .browser-window:hover {
+            border-color: rgba(0, 242, 254, 0.5);
+        }
+
+        .browser-header {
+            background: rgba(30, 41, 59, 0.8);
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .browser-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot-btn {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+        }
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+
+        .browser-title {
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            background: rgba(15, 23, 42, 0.6);
+            padding: 4px 16px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .screenshot-frame {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .browser-window:hover .screenshot-frame {
+            transform: scale(1.015);
+        }
+
+        /* Connected Workflow Timeline */
+        .timeline-container {
+            margin-top: 32px;
+            position: relative;
+            padding-left: 28px;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: linear-gradient(180deg, #00f2fe 0%, #38bdf8 50%, #fbbf24 100%);
+            opacity: 0.4;
+        }
+
+        .timeline-step {
+            position: relative;
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-step:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+            transform: translateX(6px);
+            background: rgba(15, 23, 42, 0.9);
+        }
+
+        .timeline-node {
+            position: absolute;
+            left: -28px;
+            top: 22px;
+            transform: translateX(-50%);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #020617;
+            border: 2px solid #00f2fe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #00f2fe;
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+        }
+
+        .timeline-step.branch .timeline-node {
+            border-color: #fbbf24;
+            color: #fbbf24;
+            box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+        }
+
+        .timeline-step.success .timeline-node {
+            border-color: #34d399;
+            color: #34d399;
+            box-shadow: 0 0 10px rgba(52, 211, 153, 0.5);
+        }
+
+        .step-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            font-size: 0.85rem;
-            color: #94a3b8;
-        }
-        .screenshot-frame {
-            width: 100%;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: #020617;
-            display: block;
-            transition: transform 0.3s ease;
-        }
-        .screenshot-container:hover .screenshot-frame {
-            transform: scale(1.01);
+            margin-bottom: 6px;
         }
 
-        /* Logic Flow Nodes */
-        .flow-steps {
-            margin-top: 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+        .step-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
-        .flow-step {
-            background: rgba(15, 23, 42, 0.6);
-            border-left: 3px solid #00f2fe;
+
+        .disclaimer-card {
+            margin-top: 36px;
+            background: rgba(30, 41, 59, 0.4);
+            border-left: 4px solid #38bdf8;
+            border-radius: 0 12px 12px 0;
             padding: 16px 20px;
-            border-radius: 0 10px 10px 0;
-        }
-        .flow-step.branch {
-            border-left-color: #fbbf24;
+            font-size: 0.9rem;
+            color: #94a3b8;
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+
+    <!-- Top Navigation -->
     <nav class="topnav">
         <div class="wrap">
             <div class="brand"><span class="dot"></span>QASIM.SHAIKH</div>
         </div>
     </nav>
 
-    <!-- Hero Header -->
-    <div class="wrap detail-hero animate-fade">
-        <a class="back-link" href="../index.html#projects">← Back to systems</a>
-        <span class="eyebrow">System 04</span>
-        <h1 style="margin-top:14px;">Outreach Engine</h1>
-        <p class="lede">An n8n cold-email sequencing workflow that automates multi-step prospect outreach and response logging at scale.</p>
-        
-        <div class="detail-tags">
-            <span class="tag">n8n</span>
-            <span class="tag">Cold Email Sequencing</span>
-            <span class="tag">Logic & Delays</span>
-            <span class="tag">Google Sheets</span>
+    <!-- Hero Section -->
+    <div class="wrap">
+        <div class="detail-hero-card animate-fade" style="animation-delay: 0.05s;">
+            <a class="back-link" href="../index.html#projects">← Back to systems</a>
+            <span class="eyebrow" style="display:block; margin-top:12px;">SYSTEM 04</span>
+            <h1 style="margin-top:8px; font-size:2.2rem; font-weight:800; color:#fff;">Outreach Engine</h1>
+            <p class="lede" style="margin-top:10px; color:#cbd5e1; max-width:720px; line-height:1.6;">
+                An n8n cold-email sequencing workflow that automates multi-step prospect outreach and response logging at scale.
+            </p>
+            
+            <div class="detail-tags" style="margin-top:16px; display:flex; gap:8px; flex-wrap:wrap;">
+                <span class="tag">n8n</span>
+                <span class="tag">Cold Email Sequencing</span>
+                <span class="tag">Logic & Delays</span>
+                <span class="tag">Google Sheets</span>
+            </div>
+
+            <div>
+                <span class="status-tag">⚡ Workflow JSON Built Locally · Not Publicly Deployed</span>
+            </div>
         </div>
-        
-        <span class="status-tag">⚡ Workflow JSON Built Locally · Not Publicly Deployed</span>
     </div>
 
-    <div class="wrap animate-fade" style="animation-delay: 0.15s;">
+    <!-- Main Content Wrap -->
+    <div class="wrap">
+
         <!-- Problem / Persona / Solution Section -->
-        <div class="pps-grid">
-            <!-- 1. The Problem -->
+        <div class="pps-grid animate-fade" style="animation-delay: 0.15s;">
             <div class="pps-card problem">
                 <h3><span>⚠️</span> The Problem</h3>
-                <p>Manual cold outreach caps out fast. Copy-pasting individual emails to 20 prospects a day limits pipeline generation and wastes productive hours.</p>
+                <p style="color:#94a3b8; font-size:0.92rem; line-height:1.5;">Manual cold outreach caps out fast. Copy-pasting individual emails to 20 prospects a day limits pipeline generation and wastes productive hours.</p>
             </div>
 
-            <!-- 2. Target Persona -->
             <div class="pps-card persona">
-                <h3><span>🎯</span> Example Persona</h3>
+                <h3><span>🎯</span> Target Persona</h3>
                 <span class="persona-badge">B2B Founders & SDRs</span>
-                <p>Sales teams looking to scale outbound lead generation consistently without losing personalization or paying high monthly subscription fees for heavy software.</p>
+                <p style="color:#94a3b8; font-size:0.92rem; line-height:1.5;">Sales teams looking to scale outbound lead generation consistently without losing personalization or paying high monthly subscription fees for heavy software.</p>
             </div>
 
-            <!-- 3. The Solution -->
             <div class="pps-card solution">
                 <h3><span>✅</span> The Solution</h3>
-                <p>An n8n workflow that ingests prospect lists, sequences multi-touch cold emails with calculated spacing, and logs status directly to CRM or Google Sheets.</p>
+                <p style="color:#94a3b8; font-size:0.92rem; line-height:1.5;">An n8n workflow that ingests prospect lists, sequences multi-touch cold emails with calculated spacing, and logs status directly to CRM or Google Sheets.</p>
             </div>
         </div>
 
-        <!-- Workflow Screenshot Section -->
-        <div class="screenshot-container animate-fade" style="animation-delay: 0.25s;">
-            <div class="screenshot-header">
-                <span>📸 <b>n8n Execution Architecture</b> (Sequencing Logic)</span>
-                <span style="font-family: monospace; color: #38bdf8;">system_04_n8n.png</span>
+        <!-- Interactive Browser Screenshot Container -->
+        <div class="browser-window animate-fade" style="animation-delay: 0.25s;">
+            <div class="browser-header">
+                <div class="browser-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <div class="browser-title">system_04_n8n.png</div>
+                <div style="width: 40px;"></div>
             </div>
             <img src="../assets/outreach-engine-workflow.png" alt="Outreach Engine n8n Workflow Architecture" class="screenshot-frame" onerror="this.src='https://via.placeholder.com/1200x600/0f172a/38bdf8?text=Upload+Your+Outreach+Engine+Screenshot+To+assets/outreach-engine-workflow.png';">
         </div>
 
         <!-- Step-by-Step Logic Flow -->
-        <div class="section-head" style="margin-top:40px;">
-            <span class="kicker">Execution Architecture</span>
-            <h2>Step-by-Step Workflow Logic</h2>
+        <div class="section-head animate-fade" style="margin-top:48px; animation-delay: 0.3s;">
+            <span class="kicker" style="color:#00f2fe; text-transform:uppercase; letter-spacing:1px; font-size:0.8rem; font-weight:700;">Execution Architecture</span>
+            <h2 style="font-size:1.6rem; color:#fff; margin-top:4px;">Step-by-Step Workflow Logic</h2>
         </div>
 
-        <div class="flow-steps">
-            <div class="flow-step">
-                <div class="step-label" style="color:#38bdf8; font-weight:600; font-size:0.85rem;">STAGE 1: INGESTION</div>
-                <div class="step-text" style="margin-top:4px;">Pulls target prospect batch from Google Sheets/CSV, mapping dynamic variables like <code>First Name</code> and <code>Company</code>.</div>
+        <div class="timeline-container animate-fade" style="animation-delay: 0.35s;">
+            
+            <!-- Stage 1 -->
+            <div class="timeline-step">
+                <div class="timeline-node">1</div>
+                <div class="step-header">
+                    <span class="step-label" style="color:#38bdf8;">Stage 1: Ingestion</span>
+                </div>
+                <div style="color:#e2e8f0; font-size:0.95rem;">Pulls target prospect batch from <b style="color:#00f2fe;">Google Sheets/CSV</b>, mapping dynamic variables like <code style="background:rgba(255,255,255,0.05); padding:2px 6px; border-radius:4px;">First Name</code> and <code style="background:rgba(255,255,255,0.05); padding:2px 6px; border-radius:4px;">Company</code>.</div>
             </div>
 
-            <div class="flow-step">
-                <div class="step-label" style="color:#38bdf8; font-weight:600; font-size:0.85rem;">STAGE 2: INITIAL OUTREACH</div>
-                <div class="step-text" style="margin-top:4px;">Dispatches <b>Email 1</b> via SMTP/API nodes, populating personalized context and updating status to "Contacted".</div>
+            <!-- Stage 2 -->
+            <div class="timeline-step">
+                <div class="timeline-node">2</div>
+                <div class="step-header">
+                    <span class="step-label" style="color:#38bdf8;">Stage 2: Initial Outreach</span>
+                </div>
+                <div style="color:#e2e8f0; font-size:0.95rem;">Dispatches <b style="color:#00f2fe;">Email 1</b> via SMTP/API nodes, populating personalized context and updating status to <b>"Contacted"</b>.</div>
             </div>
 
-            <div class="flow-step branch">
-                <div class="step-label" style="color:#fbbf24; font-weight:600; font-size:0.85rem;">STAGE 3: TIMED DELAY & CONDITIONAL FOLLOW-UP</div>
-                <div class="step-text" style="margin-top:4px;">Pauses execution for <b>3 to 5 days</b> to monitor response:</div>
-                <div style="margin-top:8px; font-size:0.9rem; padding-left:12px; border-left:2px solid rgba(255,255,255,0.1);">
-                    <div style="color:#34d399;">✓ <b>Replied:</b> Halts automated sequence & alerts rep to take over manually.</div>
-                    <div style="color:#f87171; margin-top:4px;">✗ <b>No Reply:</b> Dispatches threaded Follow-up Email 2 ("Bumping this to the top of your inbox...").</div>
+            <!-- Stage 3 -->
+            <div class="timeline-step branch">
+                <div class="timeline-node">3</div>
+                <div class="step-header">
+                    <span class="step-label" style="color:#fbbf24;">Stage 3: Timed Delay & Conditional Follow-Up</span>
+                </div>
+                <div style="color:#e2e8f0; font-size:0.95rem;">Pauses execution for <b style="color:#fbbf24;">3 to 5 days</b> to monitor response:</div>
+                <div style="margin-top:10px; padding-left:14px; border-left:2px solid rgba(255,255,255,0.1); display:flex; flex-direction:column; gap:6px;">
+                    <div style="color:#34d399; font-size:0.9rem;">✓ <b>Replied:</b> Halts automated sequence & alerts rep to take over manually.</div>
+                    <div style="color:#f87171; font-size:0.9rem;">✗ <b>No Reply:</b> Dispatches threaded Follow-up Email 2 ("Bumping this to the top of your inbox...").</div>
                 </div>
             </div>
 
-            <div class="flow-step">
-                <div class="step-label" style="color:#38bdf8; font-weight:600; font-size:0.85rem;">STAGE 4: STATUS LOGGING</div>
-                <div class="step-text" style="margin-top:4px;">Records final disposition and outreach history back to the database.</div>
+            <!-- Stage 4 -->
+            <div class="timeline-step success">
+                <div class="timeline-node">4</div>
+                <div class="step-header">
+                    <span class="step-label" style="color:#34d399;">Stage 4: Status Logging</span>
+                </div>
+                <div style="color:#e2e8f0; font-size:0.95rem;">Records final disposition and outreach history back to the database.</div>
             </div>
+
         </div>
 
-        <!-- Self-Directed Disclaimer -->
-        <div class="disclaimer-box" style="margin-top:32px;">
-            <b>Honest Status:</b> Existing as a tested JSON file in a local n8n instance — designed and built end-to-end.
+        <!-- Verification Disclaimer -->
+        <div class="disclaimer-card animate-fade" style="animation-delay: 0.4s;">
+            <b style="color:#e2e8f0;">Honest Status:</b> Existing as a tested JSON file in a local n8n instance — designed and built end-to-end.
         </div>
+
     </div>
 
-    <footer>© 2026 Qasim Shaikh — Built for performance</footer>
+    <footer style="text-align:center; padding:40px 0; color:#64748b; font-size:0.85rem;">
+        © 2026 Qasim Shaikh — Built for performance
+    </footer>
+
 </body>
 </html>
