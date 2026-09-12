@@ -1,291 +1,144 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Qasim Shaikh — Marketing Automation & AI Workflow Builder</title>
-<meta name="description" content="Qasim Shaikh builds production-style n8n and HubSpot automation systems — lead capture, AI-personalized outreach, and dead-lead reactivation.">
-<link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Qasim Shaikh — Marketing Automation & AI Workflow Builder. Interactive proof-of-work portfolio for HubSpot, n8n, OpenAI, CRM and revenue automation.">
+<meta name="theme-color" content="#05070b">
+<title>Qasim Shaikh — Automation Systems</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+:root{--bg:#05070b;--panel:#0a0e15;--panel2:#0e131d;--text:#f4f7fb;--muted:#8d98a9;--line:rgba(255,255,255,.09);--cyan:#63e6ff;--violet:#a98bff;--green:#69e6a1;--max:1240px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(to bottom,black,transparent 80%);z-index:-2}
+body:after{content:"";position:fixed;width:55vw;height:55vw;right:-25vw;top:-20vw;background:radial-gradient(circle,rgba(99,230,255,.12),transparent 62%);filter:blur(35px);pointer-events:none;z-index:-1}
+a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
+.topline{height:2px;background:linear-gradient(90deg,transparent,var(--cyan),var(--violet),transparent);box-shadow:0 0 25px rgba(99,230,255,.6)}
+nav{position:sticky;top:0;z-index:50;background:rgba(5,7,11,.72);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.navin{height:72px;display:flex;align-items:center;justify-content:space-between}.logo{font:600 15px "DM Mono";letter-spacing:.08em}.logo b{color:var(--cyan)}
+.navlinks{display:flex;gap:26px;color:#aab4c2;font-size:13px}.navlinks a:hover{color:white}.navcta{padding:10px 15px;border:1px solid rgba(99,230,255,.35);border-radius:9px;background:rgba(99,230,255,.07);font-size:13px}
+.hero{min-height:760px;display:grid;grid-template-columns:1.02fr .98fr;gap:55px;align-items:center;padding:85px 0 70px;position:relative}
+.eyebrow{font:500 11px "DM Mono";letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:10px}.eyebrow:before{content:"";width:28px;height:1px;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+h1{font-family:"Space Grotesk";font-size:clamp(48px,6.3vw,91px);line-height:.94;letter-spacing:-.065em;margin:22px 0}.grad{background:linear-gradient(105deg,#fff 15%,#aeefff 48%,#aa8cff 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{font-size:17px;line-height:1.75;color:#a4afbd;max-width:630px}.buttons{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0}.btn{border:1px solid var(--line);background:#0d121a;padding:14px 18px;border-radius:10px;font-weight:700;font-size:13px;transition:.25s}.btn.primary{background:#eefbff;color:#061018;border-color:#eefbff}.btn:hover{transform:translateY(-3px);border-color:rgba(99,230,255,.5);box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.stats{display:flex;gap:32px;margin-top:42px}.stat strong{display:block;font:700 28px "Space Grotesk"}.stat span{font:11px "DM Mono";color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.heroart{position:relative;perspective:1100px}.command{min-height:465px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,rgba(18,24,35,.94),rgba(7,10,16,.92));box-shadow:0 35px 100px rgba(0,0,0,.48),inset 0 1px rgba(255,255,255,.05);padding:20px;transform:rotateY(-7deg) rotateX(2deg);transition:transform .5s}.heroart:hover .command{transform:rotateY(-2deg) rotateX(0)}
+.windowbar{display:flex;align-items:center;justify-content:space-between;color:#697586;font:10px "DM Mono";padding-bottom:18px;border-bottom:1px solid var(--line)}.dots{display:flex;gap:6px}.dots i{width:7px;height:7px;border-radius:50%;background:#384352}
+.flow{height:340px;position:relative;display:flex;flex-direction:column;justify-content:space-around;padding:20px 15px}.flow:before{content:"";position:absolute;left:38px;top:43px;bottom:43px;width:1px;background:linear-gradient(var(--cyan),var(--violet));opacity:.35}
+.node{position:relative;display:grid;grid-template-columns:48px 1fr auto;align-items:center;gap:12px;z-index:2}.icon{width:47px;height:47px;border:1px solid rgba(99,230,255,.28);background:#0b151d;border-radius:12px;display:grid;place-items:center;color:var(--cyan);font:600 14px "DM Mono";box-shadow:0 0 22px rgba(99,230,255,.08)}.node h3{font-size:14px;margin:0 0 3px}.node p{font-size:10px;margin:0;color:#718094}.tag{font:10px "DM Mono";color:#8d99a8;padding:6px 8px;border:1px solid var(--line);border-radius:6px}
+.pulse{animation:pulse 2.5s infinite}.node:nth-child(2) .icon{color:var(--violet);border-color:rgba(169,139,255,.3)}.node:nth-child(3) .icon{color:var(--green);border-color:rgba(105,230,161,.3)}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 rgba(99,230,255,0)}50%{box-shadow:0 0 30px rgba(99,230,255,.25)}}
+.mini{font:10px "DM Mono";color:#627083}.live{color:var(--green)}.live:before{content:"";display:inline-block;width:6px;height:6px;background:var(--green);border-radius:50%;margin-right:6px;box-shadow:0 0 12px var(--green)}
+.ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap}.tickerin{display:inline-flex;gap:45px;padding:15px 0;animation:marquee 25s linear infinite;font:11px "DM Mono";color:#697687;text-transform:uppercase}.ticker b{color:#aeb9c8;font-weight:500}@keyframes marquee{to{transform:translateX(-50%)}}
+section{padding:105px 0}.sectionhead{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:38px}.kicker{font:10px "DM Mono";color:var(--cyan);letter-spacing:.14em;text-transform:uppercase}.sectionhead h2{font:700 clamp(34px,5vw,62px) "Space Grotesk";letter-spacing:-.055em;margin:8px 0 0}.sectionhead p{color:#7e8999;max-width:470px;line-height:1.65;margin:0}
+.lab{border:1px solid var(--line);border-radius:24px;background:linear-gradient(135deg,#090e15,#070a10);overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.3)}.labtop{padding:25px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:20px}.labtop strong{font:600 16px "DM Mono"}.labtop span{font-size:11px;color:#657284}
+.scenarios{display:flex;gap:9px;flex-wrap:wrap;padding:20px 25px;border-bottom:1px solid var(--line)}.scenario{font:11px "DM Mono";color:#9ba6b5;background:#0b1119;border:1px solid var(--line);padding:10px 12px;border-radius:8px;cursor:pointer;transition:.2s}.scenario.active,.scenario:hover{border-color:var(--cyan);color:#dffaff;background:rgba(99,230,255,.07)}
+.blueprint{display:grid;grid-template-columns:1fr 1.1fr}.bptext{padding:35px;border-right:1px solid var(--line)}.bptext h3{font:700 28px "Space Grotesk";margin:0 0 12px}.bptext p{color:#8d98a7;line-height:1.7;font-size:14px}.stack{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0}.stack span{font:10px "DM Mono";padding:6px 8px;border:1px solid var(--line);color:#9ca8b7;border-radius:5px}.reduction{font:11px "DM Mono";color:var(--green)}.bpnodes{padding:35px;display:grid;gap:12px;align-content:center}.bpn{display:flex;align-items:center;gap:12px;padding:15px;border:1px solid var(--line);border-radius:10px;background:#0a1018;animation:rise .5s both}.bpn:nth-child(2){animation-delay:.07s}.bpn:nth-child(3){animation-delay:.14s}.bpn:nth-child(4){animation-delay:.21s}.bpn i{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 15px var(--cyan)}.bpn strong{font-size:12px}.bpn small{display:block;color:#687486;font:9px "DM Mono";margin-top:3px}@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.calculator{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#090d14}.calcform{padding:35px;border-right:1px solid var(--line)}.calcform h3,.calcresult h3{font:600 23px "Space Grotesk";margin:0 0 7px}.sub{font-size:12px;color:#707c8d;line-height:1.6}.field{margin-top:20px}.field label{font:10px "DM Mono";color:#7c8999;display:block;margin-bottom:8px}.field input{width:100%;padding:13px 14px;border-radius:8px;border:1px solid var(--line);background:#060a10;color:white;outline:none;font:13px "DM Mono"}.field input:focus{border-color:var(--cyan)}.calcresult{padding:35px;display:flex;flex-direction:column;justify-content:center}.bigresult{font:700 clamp(42px,6vw,72px) "Space Grotesk";letter-spacing:-.06em;margin:15px 0 2px}.resultlabel{font:10px "DM Mono";color:#6e7a8b;text-transform:uppercase}.resultgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:25px}.resultbox{padding:14px;border:1px solid var(--line);border-radius:9px}.resultbox strong{display:block;font:700 18px "Space Grotesk"}.resultbox span{font:9px "DM Mono";color:#697586}.note{font:10px "DM Mono";color:#596577;margin-top:20px}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.project{min-height:280px;padding:26px;border:1px solid var(--line);border-radius:17px;background:linear-gradient(145deg,#0b1018,#080b11);position:relative;overflow:hidden;transition:.35s}.project:before{content:"";position:absolute;width:180px;height:180px;right:-70px;top:-70px;background:radial-gradient(circle,rgba(99,230,255,.11),transparent 70%)}.project:hover{transform:translateY(-6px);border-color:rgba(99,230,255,.28);box-shadow:0 20px 60px rgba(0,0,0,.3)}.project .num{font:10px "DM Mono";color:#5c6878}.project h3{font:700 25px "Space Grotesk";margin:25px 0 8px}.project p{font-size:13px;color:#818d9d;line-height:1.6;max-width:520px}.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:22px}.chips span{font:9px "DM Mono";color:#8793a3;border:1px solid var(--line);padding:6px 8px;border-radius:5px}.arrow{position:absolute;right:25px;bottom:24px;color:var(--cyan);font-size:20px}
+.workgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.workstep{padding:23px 17px;border-top:1px solid var(--line);position:relative}.workstep:before{content:"";position:absolute;top:-2px;left:0;width:35px;height:2px;background:var(--cyan)}.workstep span{font:10px "DM Mono";color:var(--cyan)}.workstep h3{font-size:16px;margin:14px 0 8px}.workstep p{font-size:11px;color:#717d8d;line-height:1.6;margin:0}
+.about{display:grid;grid-template-columns:.72fr 1.28fr;gap:70px;align-items:center}.portrait{aspect-ratio:1;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#0a0e15;position:relative}.portrait img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.05)}.portrait:after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(99,230,255,.12),transparent 45%,rgba(169,139,255,.12));mix-blend-mode:screen}.about h2{font:700 clamp(36px,5vw,58px) "Space Grotesk";letter-spacing:-.055em;margin:10px 0 20px}.about p{color:#929dac;line-height:1.85;font-size:14px}.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:28px}.fact{border:1px solid var(--line);padding:17px;border-radius:10px}.fact strong{display:block;font:700 23px "Space Grotesk"}.fact span{font:9px "DM Mono";color:#687486}
+.credentials{display:grid;grid-template-columns:1fr 1fr;gap:14px}.cred{padding:24px;border:1px solid var(--line);border-radius:14px;background:#090d14}.cred h3{font-size:15px;margin:0 0 14px}.cred p{font-size:12px;color:#788496;line-height:1.7;margin:0}.cred b{color:#dce3eb;font-weight:600}
+.cta{padding:75px 0 95px;text-align:center;border-top:1px solid var(--line);position:relative}.cta h2{font:700 clamp(42px,7vw,80px) "Space Grotesk";letter-spacing:-.065em;margin:0 auto 18px;max-width:850px}.cta p{color:#7f8a9b}.footer{border-top:1px solid var(--line);padding:22px 0;color:#5f6b7c;font:10px "DM Mono";display:flex;justify-content:space-between;gap:15px}
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .8s ease,transform .8s ease}.reveal.show{opacity:1;transform:none}.progress{position:fixed;z-index:100;top:0;left:0;height:2px;background:var(--cyan);width:0;box-shadow:0 0 12px var(--cyan)}
+.glow{position:fixed;pointer-events:none;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(99,230,255,.055),transparent 65%);transform:translate(-50%,-50%);z-index:-1}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:65px}.heroart{max-width:720px}.command{transform:none}.blueprint,.calculator,.about,.credentials{grid-template-columns:1fr}.bptext,.calcform{border-right:0;border-bottom:1px solid var(--line)}.workgrid{grid-template-columns:repeat(2,1fr)}.projects{grid-template-columns:1fr}.navlinks{display:none}}
+@media(max-width:600px){.wrap{width:min(100% - 26px,var(--max))}.navin{height:62px}.navcta{padding:8px 11px}.hero{min-height:auto;padding:55px 0 65px}h1{font-size:51px}.hero p{font-size:15px}.stats{gap:20px}.stat strong{font-size:23px}.command{min-height:400px;padding:13px}.flow{height:295px;padding:10px 0}.node{grid-template-columns:40px 1fr}.node .tag{display:none}.icon{width:39px;height:39px}.flow:before{left:28px}.sectionhead{display:block}.sectionhead p{margin-top:14px}.labtop{display:block}.labtop span{display:block;margin-top:8px}.scenarios{padding:15px}.bptext,.bpnodes,.calcform,.calcresult{padding:24px}.resultgrid,.facts{grid-template-columns:1fr 1fr}.workgrid{grid-template-columns:1fr}.project{min-height:250px}.footer{display:block;line-height:1.8}.footer span:last-child{display:block;margin-top:6px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}.glow{display:none}}
+</style>
 </head>
 <body>
+<div class="progress"></div><div class="glow"></div><div class="topline"></div>
+<nav><div class="wrap navin"><a class="logo" href="#"><b>Q</b>ASIM.SHAIKH</a><div class="navlinks"><a href="#systems">Systems</a><a href="#lab">Interactive Lab</a><a href="#about">About</a><a href="#contact">Contact</a></div><a class="navcta" href="mailto:skqasim923@gmail.com">Let's talk ↗</a></div></nav>
 
-<nav class="topnav">
-  <div class="wrap">
-    <div class="brand"><span class="dot"></span>QASIM.SHAIKH</div>
-    <div class="navlinks">
-      <a href="#about">About</a>
-      <a href="#projects">Systems</a>
-      <a href="#skills">Skills</a>
-      <a href="#certs">Certifications</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <a class="btn ghost" href="mailto:skqasim923@gmail.com" style="padding:8px 16px;">Email</a>
-  </div>
-</nav>
+<main>
+<section class="wrap hero">
+<div class="reveal">
+<div class="eyebrow">Marketing Automation · AI · CRM</div>
+<h1>I build <span class="grad">systems</span> that turn manual work into automation.</h1>
+<p>Production-style automation builds across HubSpot, n8n, OpenAI and APIs — designed around real processes, not tool demos.</p>
+<div class="buttons"><a class="btn primary" href="#systems">Explore my systems ↓</a><a class="btn" href="https://drive.google.com/drive/folders/1Mffjgi9EfVrvHQqLFDPZmlVz44raPpQ6?usp=sharing" target="_blank">View résumé ↗</a><a class="btn" href="https://www.linkedin.com/in/qasim-shaikh-/" target="_blank">LinkedIn ↗</a></div>
+<div class="stats"><div class="stat"><strong>04</strong><span>systems built</span></div><div class="stat"><strong>13+</strong><span>workflows</span></div><div class="stat"><strong>08</strong><span>APIs / platforms</span></div></div>
+</div>
+<div class="heroart reveal">
+<div class="command">
+<div class="windowbar"><div class="dots"><i></i><i></i><i></i></div><span>AUTOMATION / LIVE BLUEPRINT</span><span class="live">RUNNING</span></div>
+<div class="flow">
+<div class="node"><div class="icon pulse">01</div><div><h3>Lead captured</h3><p>Form / Ads / webhook</p></div><span class="tag">INPUT</span></div>
+<div class="node"><div class="icon pulse">02</div><div><h3>AI qualifies</h3><p>Score + intent + context</p></div><span class="tag">LOGIC</span></div>
+<div class="node"><div class="icon pulse">03</div><div><h3>Outreach sent</h3><p>Email / WhatsApp / sequence</p></div><span class="tag">ACTION</span></div>
+<div class="node"><div class="icon pulse">04</div><div><h3>CRM updated</h3><p>Route, notify, schedule</p></div><span class="tag">SYNC</span></div>
+</div>
+<div class="windowbar"><span>n8n · HubSpot · OpenAI · APIs</span><span class="mini">01 → 04</span></div>
+</div>
+</div>
+</section>
+<div class="ticker"><div class="tickerin"><b>HUBSPOT</b> · <b>n8n</b> · <b>OPENAI</b> · WEBHOOKS · CRM · WHATSAPP · SENDGRID · GOOGLE SHEETS · API ORCHESTRATION · <b>HUBSPOT</b> · <b>n8n</b> · <b>OPENAI</b> · WEBHOOKS · CRM · WHATSAPP · SENDGRID · GOOGLE SHEETS · API ORCHESTRATION ·</div></div>
 
-<header class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow">MBA · Operations &amp; Supply Chain · Self-directed automation practice</span>
-      <h1>I build automation systems that replace manual follow-up with <span class="accent">structured logic.</span></h1>
-      <p class="lede">n8n, HubSpot, and the OpenAI API — wired into lead capture, WhatsApp/email outreach, and CRM update workflows. Built and tested end-to-end, not pitched as slides.</p>
-      <div class="btnrow">
-        <a class="btn primary" href="#projects">View systems ↓</a>
-        <a class="btn ghost" href="https://drive.google.com/drive/folders/1Mffjgi9EfVrvHQqLFDPZmlVz44raPpQ6?usp=sharing" target="_blank" rel="noopener">Download résumé</a>
-        <a class="btn ghost" href="https://www.linkedin.com/in/qasim-shaikh-/" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-
-      <div class="stats">
-        <div class="stat"><div class="num">4</div><div class="label">Automation systems built</div></div>
-        <div class="stat"><div class="num">13+</div><div class="label">Workflows engineered end-to-end</div></div>
-        <div class="stat"><div class="num">8</div><div class="label">APIs / platforms integrated</div></div>
-      </div>
-    </div>
-
-    <div class="diagram-card">
-      <svg viewBox="0 0 320 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of an automated lead workflow: lead captured, AI scoring, outreach sent, CRM updated">
-        <!-- connectors -->
-        <path class="flow-line" d="M160 55 L160 95" />
-        <path class="flow-line" d="M160 145 L160 185" />
-        <path class="flow-line" d="M160 235 L160 275" />
-
-        <!-- node 1 -->
-        <g class="flow-node">
-          <rect x="60" y="15" width="200" height="40" rx="6"/>
-          <text x="160" y="33" text-anchor="middle">Lead captured</text>
-          <text class="sub" x="160" y="46" text-anchor="middle">Form / Ads webhook</text>
-        </g>
-        <!-- node 2 -->
-        <g class="flow-node">
-          <rect x="60" y="95" width="200" height="50" rx="6"/>
-          <text x="160" y="116" text-anchor="middle">AI scores &amp; personalizes</text>
-          <text class="sub" x="160" y="132" text-anchor="middle">OpenAI API</text>
-        </g>
-        <!-- node 3 -->
-        <g class="flow-node">
-          <rect x="60" y="185" width="200" height="50" rx="6"/>
-          <text x="160" y="206" text-anchor="middle">Outreach sent</text>
-          <text class="sub" x="160" y="222" text-anchor="middle">WhatsApp Cloud API / SendGrid</text>
-        </g>
-        <!-- node 4 -->
-        <g class="flow-node">
-          <rect x="60" y="275" width="200" height="50" rx="6"/>
-          <text x="160" y="296" text-anchor="middle">CRM updated</text>
-          <text class="sub" x="160" y="312" text-anchor="middle">HubSpot / Google Sheets</text>
-        </g>
-
-        <circle class="flow-pulse" cx="160" cy="75" r="3">
-          <animate attributeName="cy" values="60;90;60" dur="2.8s" repeatCount="indefinite"/>
-        </circle>
-      </svg>
-    </div>
-  </div>
-</header>
-
-<section id="about">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="kicker">01 — About</span>
-      <h2>Founder, FutureTech AI — a self-directed practice, not an agency.</h2>
-    </div>
-    <div class="about-panel">
-     <img src="Qasim-Shaikh.jpg" alt="Qasim Shaikh" style="width: 120px; height: 120px; border-radius: 50%; border: 2px solid #00f2fe; object-fit: cover; margin-bottom: 20px;">
-      <div>
-        <p class="lede">I'm an MBA graduate (Operations &amp; Supply Chain, Savitribai Phule Pune University — First Class with Distinction, CGPA 8.18) who builds automation systems the way an operations person would: map the process, remove the manual steps, wire the handoffs so nothing falls through. FutureTech AI is where I build and test those systems myself — n8n workflows, HubSpot sequences, AI-personalized outreach — before I'd ever sell them to a client.</p>
-        <p class="note">Everything on this site is work I built and can walk through live, unprompted. No client engagements have closed yet — these are self-directed systems, described as built, not delivered.</p>
-      </div>
-    </div>
-  </div>
+<section class="wrap reveal" id="lab">
+<div class="sectionhead"><div><div class="kicker">01 / Interactive proof</div><h2>Don't just read.<br>Run the logic.</h2></div><p>Pick a business problem and see how I translate it into an automation blueprint. This is the same thinking used before touching a platform.</p></div>
+<div class="lab">
+<div class="labtop"><strong>AUTOMATION LAB</strong><span>Select a problem → inspect the architecture</span></div>
+<div class="scenarios" id="scenarios"></div>
+<div class="blueprint"><div class="bptext" id="bptext"></div><div class="bpnodes" id="bpnodes"></div></div>
+</div>
+<div class="calculator">
+<div class="calcform"><div class="kicker">Opportunity estimator</div><h3>What could automation free up?</h3><div class="sub">A simple illustrative model for manual effort. It is not a promised business result.</div>
+<div class="field"><label>LEADS / MONTH</label><input id="leads" type="number" value="250" min="0"></div>
+<div class="field"><label>MANUAL MINUTES / LEAD</label><input id="mins" type="number" value="12" min="0"></div>
+<div class="field"><label>HOURLY VALUE · ₹</label><input id="rate" type="number" value="500" min="0"></div></div>
+<div class="calcresult"><div class="kicker">Illustrative output</div><h3>Time currently spent</h3><div class="bigresult" id="hours">50.0h</div><div class="resultlabel">manual hours / month</div><div class="resultgrid"><div class="resultbox"><strong id="value">₹25,000</strong><span>illustrative time value</span></div><div class="resultbox"><strong id="saved">40.0h</strong><span>at 80% automation</span></div></div><div class="note">Model: leads × minutes ÷ 60. Automation estimate assumes 80% reduction in manual effort.</div></div>
+</div>
 </section>
 
-<section id="projects">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="kicker">02 — Systems</span>
-      <h2>Four systems, each solving one manual bottleneck.</h2>
-      <p class="section-sub">Every workflow here runs — trigger, logic branches, and all. Click through for the architecture, not just a screenshot.</p>
-    </div>
-
-    <div class="projects-grid">
-
-      <div class="project-card">
-        <div class="project-top">
-          <div class="project-title">LeadFlow AI</div>
-          <span class="wf-count">7 workflows</span>
-        </div>
-        <p class="project-problem">Real estate teams lose leads between form fill and first contact. This captures, scores, and reaches out automatically.</p>
-        <div class="tags">
-          <span class="tag">n8n</span><span class="tag">OpenAI API</span><span class="tag">WhatsApp Cloud API</span><span class="tag">SendGrid</span><span class="tag">Calendly</span><span class="tag">Google Sheets</span>
-        </div>
-        <div class="project-links">
-          <a href="projects/leadflow-ai.html">View architecture →</a>
-          <a href="https://futuretech-ai-nexus.lovable.app/" target="_blank" rel="noopener">Live demo</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-top">
-          <div class="project-title">Lazarus Engine</div>
-          <span class="wf-count">5 workflows</span>
-        </div>
-        <p class="project-problem">Dormant CRM leads just sit there. This scores viability, re-engages them with AI-personalized messages, and detects replies in real time.</p>
-        <div class="tags">
-          <span class="tag">n8n</span><span class="tag">OpenAI API</span><span class="tag">WhatsApp Cloud API</span><span class="tag">SendGrid</span><span class="tag">Google Sheets</span>
-        </div>
-        <div class="project-links">
-          <a href="projects/lazarus-engine.html">View architecture →</a>
-          <a href="https://lead-reactivation-page.netlify.app/" target="_blank" rel="noopener">Live demo</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-top">
-          <div class="project-title">HubSpot Lead Follow-Up Automation</div>
-          <span class="wf-count">1 multi-branch workflow</span>
-        </div>
-        <p class="project-problem">Converted leads need timed follow-up without a rep babysitting the inbox. This chases, waits, escalates, and disqualifies — automatically.</p>
-        <div class="tags">
-          <span class="tag">HubSpot Workflows</span><span class="tag">Email Automation</span><span class="tag">CRM Logic</span>
-        </div>
-        <div class="project-links">
-          <a href="projects/hubspot-followup.html">View architecture →</a>
-          <span class="status-tag">Built in HubSpot · no public demo</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-top">
-          <div class="project-title">Outreach Engine</div>
-          <span class="wf-count">Cold-email sequence</span>
-        </div>
-        <p class="project-problem">Manual cold outreach doesn't scale past a handful of prospects a day. This sequences and sends without the copy-paste.</p>
-        <div class="tags">
-          <span class="tag">n8n</span><span class="tag">Cold Email</span><span class="tag">Sequencing Logic</span>
-        </div>
-        <div class="project-links">
-          <a href="projects/outreach-engine.html">View architecture →</a>
-          <span class="status-tag">Built locally · not deployed publicly</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
+<section class="wrap reveal" id="systems"><div class="sectionhead"><div><div class="kicker">02 / Selected systems</div><h2>Proof of work.</h2></div><p>Compact overview here. Each system has its own page with the deeper Problem → Solution → Architecture breakdown.</p></div>
+<div class="projects">
+<a class="project" href="projects/leadflow-ai.html"><span class="num">SYSTEM / 01</span><h3>LeadFlow AI</h3><p>Lead capture → AI qualification → personalized outreach → CRM → booking.</p><div class="chips"><span>n8n</span><span>OpenAI</span><span>HubSpot</span><span>Calendly</span></div><span class="arrow">↗</span></a>
+<a class="project" href="projects/lazarus-engine.html"><span class="num">SYSTEM / 02</span><h3>Lazarus Engine</h3><p>Dormant lead detection, viability scoring and multi-channel reactivation logic.</p><div class="chips"><span>n8n</span><span>OpenAI</span><span>WhatsApp</span><span>SendGrid</span></div><span class="arrow">↗</span></a>
+<a class="project" href="projects/hubspot-followup.html"><span class="num">SYSTEM / 03</span><h3>HubSpot Lead Follow-Up</h3><p>Structured nurture journey with scoring, MQL conversion, notifications and branches.</p><div class="chips"><span>HubSpot</span><span>Workflows</span><span>Lead scoring</span></div><span class="arrow">↗</span></a>
+<a class="project" href="projects/outreach-engine.html"><span class="num">SYSTEM / 04</span><h3>Outreach Engine</h3><p>Scheduled cold-email sequencing with status tracking and operational visibility.</p><div class="chips"><span>n8n</span><span>SendGrid</span><span>Sheets</span></div><span class="arrow">↗</span></a>
+</div>
 </section>
 
-<section id="skills">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="kicker">03 — Skills</span>
-      <h2>The stack, calibrated honestly.</h2>
-      <p class="section-sub">Advanced means I can architect and debug it unassisted. Working means I've shipped with it. Familiar means I understand it but haven't built production work with it yet.</p>
-    </div>
-    <div class="skills-grid">
-      <div class="skill-cat">
-        <h3>Automation</h3>
-        <ul>
-          <li>n8n <span class="level">ADVANCED</span></li>
-          <li>Make <span class="level">WORKING</span></li>
-          <li>Zapier <span class="level">FAMILIAR</span></li>
-        </ul>
-      </div>
-      <div class="skill-cat">
-        <h3>AI &amp; APIs</h3>
-        <ul>
-          <li>OpenAI API <span class="level">ADVANCED</span></li>
-          <li>Claude API <span class="level">WORKING</span></li>
-          <li>Prompt Engineering <span class="level">WORKING</span></li>
-        </ul>
-      </div>
-      <div class="skill-cat">
-        <h3>CRM &amp; Outreach</h3>
-        <ul>
-          <li>HubSpot CRM <span class="level">WORKING</span></li>
-          <li>Apollo / Sales Navigator <span class="level">ADVANCED</span></li>
-          <li>Instantly <span class="level">WORKING</span></li>
-          <li>GoHighLevel <span class="level">FAMILIAR</span></li>
-        </ul>
-      </div>
-      <div class="skill-cat">
-        <h3>Messaging &amp; Comms</h3>
-        <ul>
-          <li>WhatsApp Cloud API <span class="level">WORKING</span></li>
-          <li>SendGrid <span class="level">WORKING</span></li>
-          <li>Calendly API <span class="level">WORKING</span></li>
-        </ul>
-      </div>
-      <div class="skill-cat">
-        <h3>Data &amp; Analytics</h3>
-        <ul>
-          <li>Google Sheets <span class="level">ADVANCED</span></li>
-          <li>Excel <span class="level">WORKING</span></li>
-          <li>GA4 <span class="level">FAMILIAR</span></li>
-        </ul>
-      </div>
-      <div class="skill-cat">
-        <h3>Marketing</h3>
-        <ul>
-          <li>Meta Ads Manager <span class="level">WORKING</span></li>
-          <li>UTM Tracking <span class="level">WORKING</span></li>
-          <li>Clay <span class="level">FAMILIAR</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+<section class="wrap reveal"><div class="sectionhead"><div><div class="kicker">03 / Operating model</div><h2>How I work.</h2></div><p>Automation starts with process clarity. The platform comes after the workflow is understood.</p></div>
+<div class="workgrid">
+<div class="workstep"><span>01</span><h3>Map</h3><p>Understand the current journey, inputs, handoffs and bottlenecks.</p></div>
+<div class="workstep"><span>02</span><h3>Identify</h3><p>Separate repetitive work from decisions that still need humans.</p></div>
+<div class="workstep"><span>03</span><h3>Design</h3><p>Define triggers, conditions, data, fallbacks and ownership.</p></div>
+<div class="workstep"><span>04</span><h3>Build</h3><p>Connect tools through workflows, APIs, webhooks and structured data.</p></div>
+<div class="workstep"><span>05</span><h3>Test</h3><p>Trace edge cases, failures and handoffs before calling it done.</p></div>
+</div></section>
 
-<section id="certs">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="kicker">04 — Certifications</span>
-      <h2>Held, not claimed.</h2>
-    </div>
-    <div class="certs-list">
-      <div class="cert-row">
-        <div><div class="cert-name">Digital Marketing</div><div class="cert-issuer">IIM Bangalore / SWAYAM — 75.5%</div></div>
-        <span class="cert-status done">COMPLETED</span>
-      </div>
-      <div class="cert-row">
-        <div><div class="cert-name">HubSpot Marketing Hub</div><div class="cert-issuer">HubSpot Academy</div></div>
-        <span class="cert-status done">COMPLETED</span>
-      </div>
-      <div class="cert-row">
-        <div><div class="cert-name">Digital Marketing &amp; E-commerce</div><div class="cert-issuer">Google / Coursera</div></div>
-        <span class="cert-status done">COMPLETED</span>
-      </div>
-      <div class="cert-row">
-        <div><div class="cert-name">Social Media Marketing Professional</div><div class="cert-issuer">Meta / Coursera</div></div>
-        <span class="cert-status done">COMPLETED</span>
-      </div>
-      <div class="cert-row">
-        <div><div class="cert-name">HubSpot Sales Hub &amp; Reporting</div><div class="cert-issuer">HubSpot Academy</div></div>
-        <span class="cert-status done">COMPLETED</span>
-      </div>
-      <div class="cert-row">
-        <div><div class="cert-name">Google Analytics 4</div><div class="cert-issuer">Google / Skillshop</div></div>
-        <span class="cert-status done">COMPLETED</span>
-      </div>
-    </div>
-  </div>
-</section>
+<section class="wrap reveal" id="about"><div class="about"><div class="portrait"><img src="Qasim-Shaikh.jpg" alt="Qasim Shaikh"></div><div><div class="kicker">04 / About</div><h2>Operations mindset.<br>Automation execution.</h2><p>I’m an early-career Marketing Automation builder focused on HubSpot, n8n, OpenAI APIs and CRM workflows. My builds are self-directed practice projects created to demonstrate how I approach real automation problems — from lead capture and nurturing to reactivation and outreach.</p><p>My MBA in Operations & Supply Chain shapes how I think: map the process, remove unnecessary friction, automate the repeatable parts, and keep humans in the loop where judgment matters.</p><div class="facts"><div class="fact"><strong>8.18</strong><span>MBA CGPA</span></div><div class="fact"><strong>2026</strong><span>HubSpot certified</span></div><div class="fact"><strong>∞</strong><span>curiosity</span></div></div></div></div></section>
 
-<section id="contact">
-  <div class="wrap">
-    <div class="contact-panel">
-      <div>
-        <h2 style="margin-top:0;">Let's talk.</h2>
-        <p class="section-sub" style="margin-top:8px;">Open to Marketing Automation / GTM-RevOps roles — remote-first, or Nagpur / Pune.</p>
-      </div>
-      <div class="contact-links">
-        <a class="btn primary" href="mailto:skqasim923@gmail.com">Email me</a>
-        <a class="btn ghost" href="https://www.linkedin.com/in/qasim-shaikh-/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn ghost" href="https://drive.google.com/drive/folders/1Mffjgi9EfVrvHQqLFDPZmlVz44raPpQ6?usp=sharing" target="_blank" rel="noopener">Résumé (PDF)</a>
-      </div>
-    </div>
-  </div>
-</section>
+<section class="wrap reveal"><div class="sectionhead"><div><div class="kicker">05 / Credentials</div><h2>Built with intent.</h2></div><p>Selected credentials supporting the practical work shown above.</p></div>
+<div class="credentials">
+<div class="cred"><h3>HubSpot Marketing Hub</h3><p><b>HubSpot</b> · July 2026<br>Marketing automation, campaigns and platform fundamentals.</p></div>
+<div class="cred"><h3>Digital Marketing</h3><p><b>IIM Bangalore / SWAYAM</b> · 75.5% · Dec 2025</p></div>
+<div class="cred"><h3>Meta Social Media Marketing</h3><p><b>Coursera</b> · Paid and organic social marketing fundamentals.</p></div>
+<div class="cred"><h3>Google Data Analytics</h3><p><b>Coursera</b> · Data analysis and operational decision support.</p></div>
+</div></section>
 
-<footer>© 2026 Qasim Shaikh — built and hosted as a static site.</footer>
+<section class="cta reveal" id="contact"><div class="wrap"><div class="kicker">06 / Next step</div><h2>Have a workflow worth <span class="grad">automating?</span></h2><p>I'm open to Marketing Automation, Marketing Ops, RevOps and AI automation opportunities.</p><div class="buttons" style="justify-content:center"><a class="btn primary" href="mailto:skqasim923@gmail.com">Email me ↗</a><a class="btn" href="https://www.linkedin.com/in/qasim-shaikh-/" target="_blank">Connect on LinkedIn ↗</a></div></div></section>
+</main>
+<footer><div class="wrap footer"><span>© 2026 Qasim Shaikh</span><span>Marketing Automation · AI Workflows · CRM Systems</span></div></footer>
 
-<script src="script.js"></script>
+<script>
+const scenarios=[
+{title:"Leads are not followed up",desc:"Turn new inquiries into a structured journey instead of relying on someone to remember the next action.",stack:["HubSpot","n8n","OpenAI","SendGrid","Calendly"],reduction:"06 → 01 manual touchpoints",nodes:[["Capture","Receive form / ad lead"],["Qualify","Score intent + fit"],["Nurture","Personalized follow-up"],["Route","Notify sales / book"]]},
+{title:"Old leads are going cold",desc:"Find dormant records, assess viability, re-engage with context, and stop when the lead responds or exits.",stack:["n8n","OpenAI","WhatsApp Cloud API","SendGrid"],reduction:"05 → 01 manual touchpoints",nodes:[["Detect","Find dormant leads"],["Score","Estimate viability"],["Re-engage","Personalized message"],["Stop / Route","Response or fallback"]]},
+{title:"Outreach is too manual",desc:"Move repetitive prospecting and sequencing into a controlled workflow with status visibility.",stack:["n8n","SendGrid","Google Sheets","Apollo"],reduction:"08 → 02 manual touchpoints",nodes:[["Research","Collect prospect context"],["Personalize","Generate relevant copy"],["Sequence","Schedule outreach"],["Track","Update status + next step"]]},
+{title:"CRM data is messy",desc:"Validate incoming records, normalize data, synchronize systems and route clean records to the right owner.",stack:["HubSpot","n8n","Webhooks","Google Sheets"],reduction:"07 → 02 manual touchpoints",nodes:[["Capture","Receive source data"],["Validate","Check fields + format"],["Sync","Update CRM"],["Route","Assign / notify"]]}
+];
+const sc=document.getElementById("scenarios"),bt=document.getElementById("bptext"),bn=document.getElementById("bpnodes");
+function render(i=0){sc.innerHTML=scenarios.map((s,n)=>`<button class="scenario ${n===i?'active':''}" data-i="${n}">${s.title}</button>`).join("");const s=scenarios[i];bt.innerHTML=`<h3>${s.title}</h3><p>${s.desc}</p><div class="stack">${s.stack.map(x=>`<span>${x}</span>`).join("")}</div><div class="reduction">↳ ${s.reduction}</div>`;bn.innerHTML=s.nodes.map((n,j)=>`<div class="bpn"><i></i><div><strong>${String(j+1).padStart(2,"0")} · ${n[0]}</strong><small>${n[1]}</small></div></div>`).join("");document.querySelectorAll(".scenario").forEach(x=>x.onclick=()=>render(+x.dataset.i))}
+render();
+function calc(){let l=+document.getElementById("leads").value||0,m=+document.getElementById("mins").value||0,r=+document.getElementById("rate").value||0,h=l*m/60;document.getElementById("hours").textContent=h.toFixed(1)+"h";document.getElementById("value").textContent="₹"+Math.round(h*r).toLocaleString("en-IN");document.getElementById("saved").textContent=(h*.8).toFixed(1)+"h"}document.querySelectorAll(".field input").forEach(x=>x.addEventListener("input",calc));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")}),{threshold:.12});document.querySelectorAll(".reveal").forEach(x=>io.observe(x));
+addEventListener("scroll",()=>{let h=document.documentElement.scrollHeight-innerHeight;document.querySelector(".progress").style.width=(scrollY/h*100)+"%"});
+const glow=document.querySelector(".glow");addEventListener("pointermove",e=>{glow.style.left=e.clientX+"px";glow.style.top=e.clientY+"px"});
+document.querySelector(".heroart").addEventListener("pointermove",e=>{if(matchMedia("(max-width:900px)").matches)return;let r=e.currentTarget.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;e.currentTarget.querySelector(".command").style.transform=`rotateY(${x*-10-2}deg) rotateX(${y*-4}deg)`});
+document.querySelector(".heroart").addEventListener("pointerleave",e=>e.currentTarget.querySelector(".command").style.transform="rotateY(-7deg) rotateX(2deg)");
+</script>
 </body>
 </html>
