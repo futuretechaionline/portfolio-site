@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HubSpot CRM Audit, Cleanup & Automation Optimization — Qasim Shaikh</title>
+<meta name="description" content="A practical HubSpot CRM optimization project focused on data quality, CRM structure, lead management, workflow review, and reporting readiness.">
+<link rel="stylesheet" href="../styles.css">
+<style>
+:root{--bg:#050814;--panel:rgba(10,16,31,.78);--text:#eef5ff;--muted:#9aa9c2;--line:rgba(148,163,184,.16);--cyan:#38bdf8;--cyan2:#00f2fe;--green:#34d399;--amber:#fbbf24;--red:#f87171}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 15% 5%,rgba(0,242,254,.09),transparent 28%),radial-gradient(circle at 85% 20%,rgba(56,189,248,.08),transparent 30%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+a{color:inherit}.wrap{width:min(1120px,92%);margin:auto}
+.topnav{position:sticky;top:0;z-index:50;background:rgba(5,8,20,.76);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav-inner{height:64px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:800;letter-spacing:.12em;font-size:.82rem}
+.brand-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--cyan2);box-shadow:0 0 16px var(--cyan2);margin-right:9px}
+.back{color:#a9b7cc;text-decoration:none;font-size:.9rem}.back:hover{color:white}
+.hero{margin:34px 0 26px;padding:44px;border:1px solid rgba(56,189,248,.2);border-radius:24px;background:linear-gradient(135deg,rgba(15,23,42,.9),rgba(8,14,29,.68));box-shadow:0 24px 80px rgba(0,0,0,.3);position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan2),transparent)}
+.eyebrow{font-size:.76rem;font-weight:800;letter-spacing:.16em;color:var(--cyan);text-transform:uppercase}
+h1{font-size:clamp(2rem,5vw,3.55rem);line-height:1.06;margin:12px 0 16px;letter-spacing:-.04em}.lede{max-width:820px;color:#c7d3e6;font-size:1.06rem}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}.tag{padding:7px 11px;border:1px solid rgba(148,163,184,.18);border-radius:999px;background:rgba(255,255,255,.035);color:#b9c7da;font-size:.78rem}
+.status{display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:8px 13px;border-radius:999px;border:1px solid rgba(52,211,153,.28);background:rgba(52,211,153,.08);color:#8ff0c9;font-size:.8rem;font-weight:700}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:22px 0 42px}.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px;backdrop-filter:blur(10px);transition:.3s ease}
+.card:hover{transform:translateY(-5px);border-color:rgba(56,189,248,.38);box-shadow:0 18px 45px rgba(0,0,0,.25)}.card h3{margin:0 0 10px;font-size:.82rem;text-transform:uppercase;letter-spacing:.12em}.card p{margin:0;color:var(--muted);font-size:.94rem}
+.problem h3{color:var(--red)}.solution h3{color:var(--green)}.role h3{color:var(--amber)}
+.section{margin:48px 0}.kicker{color:var(--cyan);font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}h2{font-size:1.75rem;line-height:1.2;margin:6px 0 10px}.section-intro{color:var(--muted);max-width:760px}
+.browser{margin-top:24px;border:1px solid rgba(56,189,248,.2);border-radius:18px;overflow:hidden;background:#0a1020;box-shadow:0 24px 70px rgba(0,0,0,.3)}
+.browser-head{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 15px;background:rgba(30,41,59,.72);border-bottom:1px solid var(--line)}
+.dots{display:flex;gap:7px}.dot{width:10px;height:10px;border-radius:50%}.r{background:#ff5f56}.y{background:#ffbd2e}.g{background:#27c93f}.filename{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;color:#8291aa}
+.shot{width:100%;display:block;max-height:680px;object-fit:contain;background:#070b16}.image-fallback{display:none;min-height:300px;align-items:center;justify-content:center;text-align:center;padding:40px;color:#73829b}
+.browser.missing .image-fallback{display:flex}.browser.missing .shot{display:none}
+.timeline{position:relative;margin:28px 0 0;padding-left:30px}.timeline:before{content:"";position:absolute;left:10px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--cyan2),var(--cyan),rgba(248,113,113,.7));opacity:.42}
+.step{position:relative;margin:0 0 18px;padding:20px 22px;border:1px solid var(--line);border-radius:15px;background:rgba(10,16,31,.72);transition:.25s}.step:hover{transform:translateX(5px);border-color:rgba(56,189,248,.35)}
+.node{position:absolute;left:-31px;top:21px;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:#050814;border:2px solid var(--cyan);color:var(--cyan);font-size:.66rem;font-weight:800;box-shadow:0 0 15px rgba(0,242,254,.25)}
+.step h3{margin:0 0 4px;font-size:1rem}.step p{margin:0;color:var(--muted);font-size:.92rem}
+.disclaimer{margin-top:30px;padding:17px 20px;border-left:3px solid var(--cyan);background:rgba(56,189,248,.05);border-radius:0 12px 12px 0;color:#93a4bd;font-size:.88rem}
+.next{display:flex;justify-content:space-between;gap:16px;margin:42px 0;padding:22px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.025)}.next a{text-decoration:none;color:#cceeff;font-weight:700}.next a:hover{color:white}
+footer{text-align:center;padding:42px 0;color:#63718a;font-size:.82rem}.reveal{opacity:0;transform:translateY(18px);animation:up .7s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes up{to{opacity:1;transform:none}}@media(max-width:800px){.hero{padding:28px}.grid3{grid-template-columns:1fr}h1{font-size:2.2rem}.next{flex-direction:column}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{animation:none;opacity:1;transform:none}.card,.step{transition:none}}
+</style>
+</head>
+<body>
+<nav class="topnav"><div class="wrap nav-inner">
+<div class="brand"><span class="brand-dot"></span>QASIM.SHAIKH</div>
+<a class="back" href="../index.html#projects">← Back to systems</a>
+</div></nav>
+<main class="wrap">
+<section class="hero reveal">
+<div class="eyebrow">SYSTEM 05 · CLIENT PROJECT</div><h1>HubSpot CRM Audit, Cleanup & Automation Optimization</h1><p class="lede">A practical HubSpot CRM optimization project focused on data quality, CRM structure, lead management, workflow review, and reporting readiness.</p>
+<div class="tags"><span class='tag'>HubSpot CRM</span><span class='tag'>CRM Audit</span><span class='tag'>Data Quality</span><span class='tag'>Lifecycle Stage</span><span class='tag'>Lead Status</span><span class='tag'>Workflow Review</span><span class='tag'>Reporting</span></div><div class="status">● Client project · Portfolio case study</div>
+</section>
+<section class="grid3 reveal">
+<article class="card problem"><h3>⚠ The Problem</h3><p>The existing CRM needed a structured review across Contacts, Companies, Leads, Deals, properties, lifecycle stages, Lead Status, pipelines, associations, workflows, and reporting. The goal was to identify meaningful operational gaps rather than hunt for minor issues.</p></article>
+<article class="card role"><h3>◉ Project Context</h3><p>Demanzo · HubSpot CRM & Automation Consultant</p></article>
+<article class="card solution"><h3>✓ The Solution</h3><p>Audited the existing CRM structure, reviewed data quality and associations, evaluated lead qualification and sales handoff processes, reviewed automation dependencies, and documented practical recommendations for improving CRM reliability and reporting.</p></article>
+</section>
+<section class="section reveal"><div class="kicker">Execution Architecture</div><h2>From CRM audit to actionable recommendations</h2>
+<p class="section-intro">The work followed a consultant-style flow: understand the existing environment, inspect important CRM objects and processes, classify business-impacting issues, then document and validate the recommended improvements.</p><div class="timeline"><div class='step'><span class='node'>1</span><h3>1 · Scope the CRM</h3><p>Review the existing Contacts, Companies, Leads, Deals, properties, pipelines, associations, workflows and reporting requirements within the agreed scope.</p></div><div class='step'><span class='node'>2</span><h3>2 · Inspect data quality</h3><p>Look for missing or inconsistent data, association gaps, property issues, lifecycle/Lead Status problems and other issues that can affect lead management or reporting.</p></div><div class='step'><span class='node'>3</span><h3>3 · Review the sales process</h3><p>Evaluate qualification, handoff, routing, follow-up and pipeline processes to identify manual steps, unclear ownership or process gaps.</p></div><div class='step'><span class='node'>4</span><h3>4 · Review automation</h3><p>Inspect relevant workflows and automation for overlapping logic, dependencies, manual steps and opportunities for safer process improvement.</p></div><div class='step'><span class='node'>5</span><h3>5 · Document findings</h3><p>Capture the issue, evidence, business impact, priority and recommendation so the client has a practical action plan.</p></div><div class='step'><span class='node'>6</span><h3>6 · Validate recommendations</h3><p>Check that proposed changes fit the existing CRM structure and avoid creating duplicate properties, conflicting logic or unnecessary automation.</p></div></div></section>
+<section class="section reveal"><div class="kicker">Visual Proof</div><h2>Project Screenshots</h2>
+<p class="section-intro">Use real, non-confidential screenshots from the project. The page is already wired to the exact filenames below.</p>
+<div class='browser reveal'>
+<div class='browser-head'><div class='dots'><span class='dot r'></span><span class='dot y'></span><span class='dot g'></span></div>
+<div class='filename'>demanzo-hero.png</div><div style='width:40px'></div></div>
+<img class='shot' src='../assets/demanzo-hero.png' alt='Demanzo HubSpot CRM project overview' onerror="this.closest('.browser').classList.add('missing')">
+<div class='image-fallback'>Upload&nbsp; <strong>assets/demanzo-hero.png</strong>&nbsp; to display this project visual.</div>
+</div><div class='browser reveal'>
+<div class='browser-head'><div class='dots'><span class='dot r'></span><span class='dot y'></span><span class='dot g'></span></div>
+<div class='filename'>demanzo-crm-audit.png</div><div style='width:40px'></div></div>
+<img class='shot' src='../assets/demanzo-crm-audit.png' alt='Demanzo HubSpot CRM audit view' onerror="this.closest('.browser').classList.add('missing')">
+<div class='image-fallback'>Upload&nbsp; <strong>assets/demanzo-crm-audit.png</strong>&nbsp; to display this project visual.</div>
+</div><div class='browser reveal'>
+<div class='browser-head'><div class='dots'><span class='dot r'></span><span class='dot y'></span><span class='dot g'></span></div>
+<div class='filename'>demanzo-data-quality.png</div><div style='width:40px'></div></div>
+<img class='shot' src='../assets/demanzo-data-quality.png' alt='Demanzo CRM data quality review' onerror="this.closest('.browser').classList.add('missing')">
+<div class='image-fallback'>Upload&nbsp; <strong>assets/demanzo-data-quality.png</strong>&nbsp; to display this project visual.</div>
+</div><div class='browser reveal'>
+<div class='browser-head'><div class='dots'><span class='dot r'></span><span class='dot y'></span><span class='dot g'></span></div>
+<div class='filename'>demanzo-workflow-review.png</div><div style='width:40px'></div></div>
+<img class='shot' src='../assets/demanzo-workflow-review.png' alt='Demanzo HubSpot workflow review' onerror="this.closest('.browser').classList.add('missing')">
+<div class='image-fallback'>Upload&nbsp; <strong>assets/demanzo-workflow-review.png</strong>&nbsp; to display this project visual.</div>
+</div><div class='browser reveal'>
+<div class='browser-head'><div class='dots'><span class='dot r'></span><span class='dot y'></span><span class='dot g'></span></div>
+<div class='filename'>demanzo-reporting.png</div><div style='width:40px'></div></div>
+<img class='shot' src='../assets/demanzo-reporting.png' alt='Demanzo reporting and funnel review' onerror="this.closest('.browser').classList.add('missing')">
+<div class='image-fallback'>Upload&nbsp; <strong>assets/demanzo-reporting.png</strong>&nbsp; to display this project visual.</div>
+</div></section>
+<div class="disclaimer reveal"><strong>Portfolio disclosure:</strong> This is a client project used to demonstrate professional project experience. Confidential business data and sensitive CRM information should not be published. Use only screenshots you are authorized to show, and redact names, emails, company data and other confidential information. This page does not state or imply client endorsement.</div>
+<div class="next reveal"><a href='../index.html#projects'>← All systems</a><a href='novascale.html'>Next project: NovaScale →</a></div>
+</main>
+<footer>© 2026 Qasim Shaikh — CRM & Automation Systems</footer>
+<script>
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.animationDelay=(Math.min(i*.06,.45))+'s'});
+</script>
+</body></html>
